@@ -1,0 +1,11 @@
+@Portfolio_HostAddress = http://localhost:5062
+
+GET {{Portfolio_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{Portfolio_HostAddress}}/todos/1
+Accept: application/json
+
+###
