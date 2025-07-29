@@ -48,7 +48,7 @@
         }
 
         .skill-btn.active {
-            background-color: #4338CA; /* indigo-700 */
+            background-color: #4338CA;
             color: white;
         }
 
@@ -698,19 +698,7 @@
             const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
             localStorage.setItem('theme', newTheme);
             updateTheme(newTheme);
-            updateChartColors();
-        }
-        
-        // Function to update chart colors when theme changes
-        function updateChartColors() {
-            const colors = getChartColors();
-            chartInstance.options.plugins.title.color = colors.titleColor;
-            chartInstance.options.scales.y.title.color = colors.axisColor;
-            chartInstance.options.scales.y.ticks.color = colors.axisColor;
-            chartInstance.options.scales.y.grid.color = colors.gridColor;
-            chartInstance.options.scales.x.ticks.color = colors.axisColor;
-            chartInstance.options.scales.x.grid.color = colors.gridColor;
-            chartInstance.update();
+            // updateChartColors(); // No chart to update
         }
 
         // Add event listeners
@@ -731,61 +719,6 @@
                     card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
                 });
             });
-        });
-
-        const ctx = document.getElementById('projectsChart').getContext('2d');
-        
-        // Function to get current theme colors
-        function getChartColors() {
-            const isDark = document.documentElement.classList.contains('dark');
-            return {
-                titleColor: isDark ? '#f3f4f6' : '#374151',
-                axisColor: isDark ? '#9ca3af' : '#6b7280',
-                gridColor: isDark ? '#374151' : '#e5e7eb'
-            };
-        }
-        
-        let chartInstance = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['SWEN3.Paperless.RabbitMq', 'CreatePdf.NET', 'Scalar.Kiota.Extension'],
-                datasets: [{
-                    label: 'Total NuGet Downloads',
-                    data: [1718, 486, 0],
-                    backgroundColor: ['rgba(79, 70, 229, 0.6)', 'rgba(13, 148, 136, 0.6)', 'rgba(147, 51, 234, 0.6)'],
-                    borderColor: ['rgba(79, 70, 229, 1)', 'rgba(13, 148, 136, 1)', 'rgba(147, 51, 234, 1)'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: {
-                    legend: {display: false},
-                    title: {
-                        display: true,
-                        text: 'NuGet Package Downloads Comparison',
-                        font: {size: 16},
-                        color: getChartColors().titleColor
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: (context) => `${context.dataset.label || ''}: ${new Intl.NumberFormat('en-US').format(context.parsed.y)}`
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true, 
-                        title: {display: true, text: 'Downloads', color: getChartColors().axisColor},
-                        ticks: {color: getChartColors().axisColor},
-                        grid: {color: getChartColors().gridColor}
-                    },
-                    x: {
-                        ticks: {color: getChartColors().axisColor},
-                        grid: {color: getChartColors().gridColor}
-                    }
-                }
-            }
         });
 
         // --- Gemini API Integration ---
@@ -833,8 +766,7 @@
         // --- Gemini API Call Function ---
         async function callGemini(prompt) {
             const apiKey = AI_CONFIG.apiKey;
-            
-            // Check if API key is still a placeholder
+        
             if (!apiKey || apiKey.includes('{{') || apiKey === '') {
                 return "AI features are temporarily unavailable. The API key needs to be configured in the deployment environment.";
             }
@@ -875,7 +807,7 @@
         function getResumeContext() {
             let context = "This is the resume of Alexander Nachtmann, a Full-Stack C# Developer.\n\n";
             document.querySelectorAll('section').forEach(section => {
-                if (section.id !== 'ai-cover-letter') { // Exclude the AI section itself
+                if (section.id !== 'ai-cover-letter') {
                     context += `Section: ${section.id}\n`;
                     context += section.innerText + "\n\n";
                 }
@@ -885,7 +817,8 @@
 
         // --- Feature 1: "Ask Me Anything" ---
         const askMeBtn = document.getElementById('ask-me-anything-btn');
-        askMeBtn.addEventListener('click', () => {
+        if (askMeBtn) {
+            askMeBtn.addEventListener('click', () => {
             modalTitle.textContent = 'Ask Me Anything';
             modalContent.innerHTML = `<p class="text-center">You can ask questions about my skills, projects, or experience. An AI assistant, trained on this resume, will answer.</p>`;
             modalFormContainer.innerHTML = `
@@ -912,6 +845,7 @@
                 input.value = '';
             });
         });
+        }
 
         // --- Feature 2: "Suggest Next Steps" for Projects ---
         document.querySelectorAll('.suggest-next-steps-btn').forEach(button => {
@@ -935,7 +869,8 @@
 
         // --- Feature 3: AI Cover Letter Assistant ---
         const coverLetterForm = document.getElementById('cover-letter-form');
-        coverLetterForm.addEventListener('submit', async (e) => {
+        if (coverLetterForm) {
+            coverLetterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const jobDescriptionTextarea = document.getElementById('job-description');
             const jobDescription = jobDescriptionTextarea.value.trim();
@@ -956,10 +891,10 @@
             const response = await callGemini(prompt);
             modalContent.innerHTML = `<div class="p-4 bg-indigo-50 dark:bg-indigo-900/50 rounded-lg"><p class="text-slate-700 dark:text-gray-200">${response.replace(/\n/g, '<br>')}</p></div>`;
         });
+        }
 
     });
 
-    // Dark mode toggle implemented with custom variant and localStorage persistence
 </script>
 </body>
 </html>
