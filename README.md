@@ -13,7 +13,7 @@ cd Portfolio && npx tailwindcss -i ./wwwroot/css/tailwind.css -o ./wwwroot/css/o
 ```
 
 ### AI Features
-1. Get a [Gemini API key](https://aistudio.google.com/app/apikey)
+1. Get a [Gemini API key](https://aistudio.google.com/app/api-keys)
 2. Add to [GitHub Secrets](https://github.com/ANcpLua/portfolio/settings/secrets/actions): `GEMINI_API_KEY`
 3. GitHub Actions automatically injects the key during deployment
 
