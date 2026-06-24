@@ -37,8 +37,8 @@ import { PortraitMorphComponent } from './portrait-morph.component';
             >
               <div class="relative h-full w-full overflow-hidden rounded-[1.6rem]">
                 <app-portrait-morph
-                  srcA="/josh.webp"
-                  srcB="/josh_wave.webp"
+                  srcA="/alexander.webp"
+                  srcB="/alexander_wave.webp"
                   alt="Alexander Nachtmann"
                 />
               </div>
