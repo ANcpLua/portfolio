@@ -62,8 +62,12 @@ import { ContactCardComponent } from '../components/contact/contact-card.compone
                 I'm currently finishing an
                 <strong class="text-foreground font-semibold">M.Sc. in Software Engineering</strong>
                 (GPA 1.0), serve as a study-program representative, and lecture C# externally. I
-                care about clean architecture, fast feedback loops, and tooling that makes the right
-                thing the easy thing — and I'm looking for full-stack
+                work by Larry Wall's three virtues —
+                <strong class="text-foreground font-semibold">laziness</strong> (automate the toil),
+                <strong class="text-foreground font-semibold">impatience</strong> (anticipate, don't
+                just react), and
+                <strong class="text-foreground font-semibold">hubris</strong> (code no one wants to
+                badmouth). Open to full-stack
                 <strong class="text-foreground font-semibold">C# &amp; Angular</strong> work.
               </p>
             </div>
