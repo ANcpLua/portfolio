@@ -7,7 +7,7 @@ export const OWNER = {
   name: 'Alexander Nachtmann',
   firstName: 'Alexander',
   role: 'Full-Stack Software Engineer',
-  tagline: 'C# / .NET · Angular',
+  tagline: 'C# / .NET · TypeScript',
   location: 'Vienna, Austria',
   email: 'anfh22@outlook.com',
   github: 'https://github.com/ANcpLua',
@@ -17,7 +17,7 @@ export const OWNER = {
 } as const;
 
 export const PROFILE_CONTEXT = `
-# Alexander Nachtmann — Full-Stack Software Engineer (C# / .NET · Angular)
+# Alexander Nachtmann — Full-Stack Software Engineer (C# / .NET · TypeScript)
 
 Based in Vienna, Austria. Contact: ${OWNER.email} · GitHub github.com/ANcpLua · NuGet nuget.org/profiles/ANcpLua · LinkedIn linkedin.com/in/alexander-nachtmann. Languages: German (native), English (fluent).
 
