@@ -126,11 +126,15 @@ export class StackComponent {
 
     this.cleanup?.();
     const currentRun = ++this.runId;
-    const Matter = await import('matter-js');
+    const matterModule = await import('matter-js');
     if (currentRun !== this.runId || this.destroyed) {
       return;
     }
 
+    // matter-js is CommonJS: under esbuild's ESM interop the API lands on `.default`,
+    // so a top-level destructure yields undefined (Engine.create() -> "reading 'create'"
+    // of undefined) and the physics never starts. Read the API off `.default`.
+    const Matter = matterModule.default;
     const { Engine, Runner, World, Bodies, Body, Mouse, MouseConstraint, Events } = Matter;
     const measureChildren = Array.from(measure.children) as HTMLElement[];
     const dims = measureChildren.map((element) => {

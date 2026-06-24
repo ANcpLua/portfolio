@@ -71,7 +71,7 @@ const FEATURED_COUNT = 4;
                 >
                   <svg
                     [lucideIcon]="project.icon"
-                    class="project-card__image-inner h-14 w-14"
+                    class="project-card__icon h-14 w-14"
                     [style.color]="project.tint"
                     [attr.stroke-width]="1.5"
                     aria-hidden="true"
