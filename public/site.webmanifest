@@ -1,11 +1,11 @@
 {
-  "name": "Portfolio",
-  "short_name": "Portfolio",
-  "description": "A modern, accessible portfolio template built with Angular, Tailwind CSS, and TypeScript.",
+  "name": "Alexander Nachtmann — Portfolio",
+  "short_name": "Nachtmann",
+  "description": "Portfolio of Alexander Nachtmann — full-stack C# / .NET & Angular engineer in Vienna.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0066ff",
+  "theme_color": "#0a0a0a",
   "icons": [
     {
       "src": "/icon.svg",

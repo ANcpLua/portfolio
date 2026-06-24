@@ -1,9 +1,8 @@
-# Portfolio
+# Alexander Nachtmann — Portfolio
 
-A personal portfolio built around a signature WebGL flow shader, a morphing illustrated
+My personal portfolio, built around a signature WebGL flow shader, a morphing illustrated
 portrait, Lenis smooth scroll, a physics-driven tech stack, and an Anthropic-powered AI
 assistant — on a calm black-and-white design system, server-rendered with Angular SSR.
-**Free to use in personal and commercial projects.**
 
 ## Built With
 
@@ -102,4 +101,4 @@ AI assistant.
 
 ## License
 
-[MIT](LICENSE) — free to use in personal and commercial projects.
+[MIT](LICENSE)
