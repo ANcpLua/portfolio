@@ -5,7 +5,7 @@ import {
   LucidePaintbrush,
   LucidePalette,
   LucideRadioTower,
-  LucideScan,
+  LucideScanLine,
   LucideShieldCheck,
   LucideWaypoints,
   LucideZap,
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   },
   {
     id: 'dicom-fhir',
-    icon: LucideScan,
+    icon: LucideScanLine,
     name: 'dicom-fhir-viewer',
     title: 'DICOM viewer with FHIR resources',
     description:
