@@ -15,7 +15,7 @@ const SUGGESTIONS = [
   'What does ANcpLua.Agents do?',
   'Tell me about your NuGet packages',
   'What are you most passionate about?',
-  'What is ErrorOrX, and why did you build it?',
+  'What is ErrorOrX?',
 ];
 
 @Component({
@@ -23,106 +23,111 @@ const SUGGESTIONS = [
   imports: [LucideDynamicIcon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="mx-auto my-12 w-full max-w-275 px-6 sm:my-20 sm:px-10">
-      <div
-        class="border-foreground/8 bg-background fade-in flex flex-col gap-5 rounded-4xl border p-6 shadow-sm sm:p-8"
-      >
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-2">
-            <span
-              class="border-foreground/10 bg-foreground/5 inline-flex h-7 w-7 items-center justify-center rounded-lg border"
-            >
-              <svg [lucideIcon]="icons.Sparkles" class="h-4 w-4" aria-hidden="true"></svg>
-            </span>
-            <h2 class="text-foreground text-[15px] font-semibold tracking-tight">
-              Ask me anything
-            </h2>
-          </div>
-          <p class="text-foreground/65 max-w-[60ch] text-[15px] leading-[1.5] tracking-tight">
-            Ask about my projects, open-source packages, or experience — answers come straight from
-            my CV. You can even paste a job description.
-          </p>
-        </div>
-
-        @if (messages().length || streaming() || loading()) {
-          <div
-            #scroller
-            class="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 flex max-h-100 flex-col gap-4 overflow-y-auto rounded-3xl border p-4"
-            aria-live="polite"
-          >
-            @for (message of messages(); track $index) {
-              <div class="flex" [class.justify-end]="message.role === 'user'">
-                <div
-                  class="max-w-[85%] rounded-2xl px-4 py-2.5 text-[15px] leading-[1.55] tracking-tight whitespace-pre-wrap"
-                  [class]="
-                    message.role === 'user'
-                      ? 'bg-foreground text-background'
-                      : 'bg-background text-foreground border-foreground/8 border'
-                  "
-                >
-                  {{ message.content }}
-                </div>
-              </div>
-            }
-
-            @if (streaming()) {
-              <div class="flex">
-                <div
-                  class="border-foreground/8 bg-background text-foreground max-w-[85%] rounded-2xl border px-4 py-2.5 text-[15px] leading-[1.55] tracking-tight whitespace-pre-wrap"
-                >
-                  {{ streaming()
-                  }}<span
-                    class="bg-foreground/70 ml-0.5 inline-block h-4 w-1.5 animate-pulse align-middle"
-                  ></span>
-                </div>
-              </div>
-            } @else if (loading()) {
-              <div class="text-foreground/50 px-1 text-[14px]">Thinking…</div>
-            }
-          </div>
-        } @else {
-          <div class="flex flex-wrap gap-2">
-            @for (suggestion of suggestions; track suggestion) {
-              <button
-                type="button"
-                (click)="useSuggestion(suggestion)"
-                class="border-foreground/8 bg-background text-foreground/75 hover:text-foreground hover:border-foreground/15 focus-ring cursor-pointer rounded-full border px-3.5 py-1.5 text-[13px] tracking-tight transition-colors"
-              >
-                {{ suggestion }}
-              </button>
-            }
-          </div>
+    <section
+      class="mx-auto my-16 flex w-full max-w-2xl flex-col items-center px-6 text-center sm:my-24"
+    >
+      <div class="relative mb-5 flex h-12 w-12 items-center justify-center">
+        <span class="border-foreground/15 absolute inset-0 rounded-full border"></span>
+        @if (loading()) {
+          <span
+            class="border-t-foreground/60 absolute inset-0 animate-spin rounded-full border-2 border-transparent"
+          ></span>
         }
-
-        @if (error()) {
-          <p class="text-[14px] tracking-tight text-red-500" role="alert">{{ error() }}</p>
-        }
-
-        <form class="flex items-end gap-2" (submit)="$event.preventDefault(); send()">
-          <label class="sr-only" for="assistant-input">Message the assistant</label>
-          <textarea
-            id="assistant-input"
-            [value]="draft()"
-            (input)="draft.set(textValue($event))"
-            (keydown)="onKeydown($event)"
-            rows="2"
-            placeholder="Ask about my projects, packages, or experience…"
-            class="focus-ring border-foreground/10 bg-background text-foreground placeholder:text-foreground/40 max-h-48 min-h-[2.75rem] flex-1 resize-y rounded-2xl border px-4 py-2.5 text-[15px] tracking-tight outline-none"
-          ></textarea>
-          <button
-            type="submit"
-            [disabled]="loading() || !draft().trim()"
-            aria-label="Send message"
-            class="focus-ring bg-foreground text-background inline-flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-2xl transition-opacity disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <svg [lucideIcon]="icons.ArrowUp" class="h-5 w-5" aria-hidden="true"></svg>
-          </button>
-        </form>
-
-        <p class="text-foreground/40 text-[12px] tracking-tight">
-          AI-generated from my CV — it can be imperfect. For anything important, reach out directly.
-        </p>
+        <svg
+          [lucideIcon]="icons.Sparkles"
+          class="text-foreground/70 h-5 w-5"
+          aria-hidden="true"
+        ></svg>
       </div>
+
+      <h2 class="text-foreground text-[1.75rem] font-medium tracking-tight sm:text-[2rem]">
+        Ask me anything about Alexander
+      </h2>
+      <p class="text-foreground/55 mt-2 max-w-[48ch] text-[14px] leading-[1.5] tracking-tight">
+        My projects, open-source packages, and experience — answered from my CV. You can even paste
+        a job description.
+      </p>
+
+      @if (messages().length || streaming() || loading()) {
+        <div
+          #scroller
+          class="mt-8 flex max-h-[26rem] w-full flex-col gap-4 overflow-y-auto text-left"
+          aria-live="polite"
+        >
+          @for (message of messages(); track $index) {
+            <div class="flex" [class.justify-end]="message.role === 'user'">
+              <div
+                class="max-w-[88%] rounded-2xl px-4 py-2.5 text-[15px] leading-[1.55] tracking-tight whitespace-pre-wrap"
+                [class]="
+                  message.role === 'user'
+                    ? 'bg-foreground text-background'
+                    : 'bg-foreground/4 dark:bg-foreground/8 text-foreground'
+                "
+              >
+                {{ message.content }}
+              </div>
+            </div>
+          }
+
+          @if (streaming()) {
+            <div class="flex">
+              <div
+                class="bg-foreground/4 dark:bg-foreground/8 text-foreground max-w-[88%] rounded-2xl px-4 py-2.5 text-[15px] leading-[1.55] tracking-tight whitespace-pre-wrap"
+              >
+                {{ streaming()
+                }}<span
+                  class="bg-foreground/70 ml-0.5 inline-block h-4 w-1.5 animate-pulse align-middle"
+                ></span>
+              </div>
+            </div>
+          } @else if (loading()) {
+            <div class="text-foreground/50 text-[14px]">Thinking…</div>
+          }
+        </div>
+      }
+
+      @if (error()) {
+        <p class="mt-4 text-[14px] tracking-tight text-red-500" role="alert">{{ error() }}</p>
+      }
+
+      <form class="relative mt-8 w-full max-w-xl" (submit)="$event.preventDefault(); send()">
+        <label class="sr-only" for="assistant-input">Ask about Alexander</label>
+        <textarea
+          id="assistant-input"
+          [value]="draft()"
+          (input)="draft.set(textValue($event))"
+          (keydown)="onKeydown($event)"
+          rows="1"
+          placeholder="Ask anything about Alexander…"
+          class="focus-ring border-foreground/12 bg-background text-foreground placeholder:text-foreground/40 max-h-40 w-full resize-none rounded-2xl border py-3.5 pr-14 pl-5 text-left text-[15px] tracking-tight shadow-sm outline-none"
+        ></textarea>
+        <button
+          type="submit"
+          [disabled]="loading() || !draft().trim()"
+          aria-label="Send message"
+          class="focus-ring bg-foreground text-background absolute right-2 bottom-2.5 inline-flex h-9 w-9 items-center justify-center rounded-xl transition-opacity disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          <svg [lucideIcon]="icons.ArrowUp" class="h-4 w-4" aria-hidden="true"></svg>
+        </button>
+      </form>
+
+      @if (!messages().length && !streaming() && !loading()) {
+        <div class="mt-4 flex flex-wrap justify-center gap-2">
+          @for (suggestion of suggestions; track suggestion) {
+            <button
+              type="button"
+              (click)="useSuggestion(suggestion)"
+              class="border-foreground/8 bg-background text-foreground/75 hover:text-foreground hover:border-foreground/15 focus-ring cursor-pointer rounded-full border px-3.5 py-1.5 text-[13px] tracking-tight transition-colors"
+            >
+              {{ suggestion }}
+            </button>
+          }
+        </div>
+      }
+
+      <p class="text-foreground/40 mt-5 text-[12px] tracking-tight">
+        AI-generated from my CV — it can be imperfect. For anything important, reach out directly.
+      </p>
     </section>
   `,
 })
