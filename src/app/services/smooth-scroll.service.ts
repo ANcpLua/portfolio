@@ -66,6 +66,10 @@ export class SmoothScrollService {
   }
 
   destroy(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     if (this.clickHandler) {
       this.document.removeEventListener('click', this.clickHandler);
       this.clickHandler = undefined;

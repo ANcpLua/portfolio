@@ -32,36 +32,39 @@ import { ContactCardComponent } from '../components/contact/contact-card.compone
             <h1
               class="text-foreground font-serif text-[1.75rem] font-medium tracking-tight sm:text-[2rem]"
             >
-              Hello! I'm
-              <span class="border-foreground/30 border-b pb-0.5">Josh Mercer</span>.
+              Hi! I'm
+              <span class="border-foreground/30 border-b pb-0.5">Alexander Nachtmann</span>.
             </h1>
             <div
               class="text-foreground/75 mt-8 space-y-6 text-[17px] leading-[1.7] tracking-tight sm:text-[18px]"
             >
               <p>
                 A
+                <strong class="text-foreground font-semibold">full-stack software engineer</strong>
+                in Vienna working primarily in
+                <strong class="text-foreground font-semibold">C# / .NET</strong> with
+                <strong class="text-foreground font-semibold">Angular</strong> and React on the
+                frontend. At RUBICON IT (2023–2025, dual study) I shipped production apps across
+                ASP.NET Core, Blazor, Vue 3, and WPF in an agile team, alongside a Computer Science
+                degree.
+              </p>
+              <p>
+                Outside of work I maintain a substantial open-source ecosystem —
                 <strong class="text-foreground font-semibold"
-                  >product designer and frontend engineer</strong
-                >
-                passionate about building intuitive, human-centered digital experiences. With a
-                background in
-                <strong class="text-foreground font-semibold">visual craft</strong> and
-                <strong class="text-foreground font-semibold">interaction design</strong>, I bring a
-                unique blend of design thinking and technical execution to every project.
+                  >48 NuGet packages with 340,000+ downloads</strong
+                >: Roslyn analyzers and source generators, an opinionated MSBuild SDK, and a
+                C#-native LLM agent framework on the Microsoft Agent Framework. I also contribute
+                upstream to
+                <strong class="text-foreground font-semibold">Microsoft's dotnet/aspnetcore</strong>
+                and the OpenTelemetry project.
               </p>
               <p>
-                My journey into design began when I realized how often good user experience was
-                missing from powerful tools. That led me to embrace
-                <strong class="text-foreground font-semibold">user-centered design</strong> as both
-                a mindset and a craft, one that balances clarity, creativity, and functionality.
-              </p>
-              <p>
-                Currently leading design at small product teams shipping software for
-                <strong class="text-foreground font-semibold">creative professionals</strong>, I'm
-                always looking for opportunities to
-                <strong class="text-foreground font-semibold">
-                  shape thoughtful interfaces and build scalable design systems </strong
-                >.
+                I'm currently finishing an
+                <strong class="text-foreground font-semibold">M.Sc. in Software Engineering</strong>
+                (GPA 1.0), serve as a study-program representative, and lecture C# externally. I
+                care about clean architecture, fast feedback loops, and tooling that makes the right
+                thing the easy thing — and I'm looking for full-stack
+                <strong class="text-foreground font-semibold">C# &amp; Angular</strong> work.
               </p>
             </div>
           </div>

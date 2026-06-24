@@ -72,7 +72,11 @@ export class ContactButtonComponent {
   });
 
   constructor() {
-    this.destroyRef.onDestroy(() => window.clearTimeout(this.resetTimer));
+    this.destroyRef.onDestroy(() => {
+      if (typeof window !== 'undefined') {
+        window.clearTimeout(this.resetTimer);
+      }
+    });
   }
 
   protected async copyEmail(): Promise<void> {

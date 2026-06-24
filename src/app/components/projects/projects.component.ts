@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LucideArrowRight, LucideDynamicIcon } from '@lucide/angular';
+import { LucideArrowRight, LucideArrowUpRight, LucideDynamicIcon } from '@lucide/angular';
 
 import { projects, type Project } from '../../portfolio-data';
 
@@ -22,25 +22,28 @@ const FEATURED_COUNT = 4;
             <h2
               class="text-foreground font-serif text-[2.5rem] leading-[1.05] font-medium tracking-tight md:text-[3rem] lg:text-[3.5rem]"
             >
-              My projects
+              Selected work
             </h2>
             <p
-              class="text-foreground/65 max-w-[33ch] text-[18px] leading-[1.45] tracking-tight sm:text-[20px]"
+              class="text-foreground/65 max-w-[36ch] text-[18px] leading-[1.45] tracking-tight sm:text-[20px]"
             >
-              From playful experiments to thoughtful systems, a look at the work I'm proud to have
-              shipped.
+              Open-source .NET tooling, source generators, and full-stack apps — a look at what I
+              build and ship.
             </p>
           </div>
         }
 
         <div class="columns-1 gap-6 md:columns-2 md:gap-7">
           @for (project of items(); track project.id; let index = $index) {
-            <div
-              class="fade-in mb-6 break-inside-avoid md:mb-7"
+            <a
+              [href]="project.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="fade-in mb-6 block break-inside-avoid md:mb-7"
               [style.--fade-delay]="delay(index) + 'ms'"
             >
               <article
-                class="project-card border-foreground/8 bg-background flex flex-col gap-4 rounded-3xl border p-3 sm:p-3.5"
+                class="project-card border-foreground/8 bg-background flex cursor-pointer flex-col gap-4 rounded-3xl border p-3 sm:p-3.5"
               >
                 <header class="flex items-center gap-2.5 px-1 pt-2">
                   <span
@@ -52,23 +55,27 @@ const FEATURED_COUNT = 4;
                       aria-hidden="true"
                     ></svg>
                   </span>
-                  <span class="text-foreground text-sm font-medium tracking-tight">
-                    {{ project.iconLabel }}
+                  <span class="text-foreground font-mono text-sm font-medium tracking-tight">
+                    {{ project.name }}
                   </span>
+                  <svg
+                    [lucideIcon]="icons.ArrowUpRight"
+                    class="text-foreground/40 ml-auto h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  ></svg>
                 </header>
 
                 <div
-                  class="project-card__image ring-foreground/5 bg-foreground/5 relative w-full overflow-hidden rounded-2xl ring-1"
-                  [style.aspect-ratio]="project.imageRatio"
+                  class="project-card__image ring-foreground/5 relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-2xl ring-1"
+                  [style.background]="panel(project)"
                 >
-                  <div class="project-card__image-inner">
-                    <img
-                      [src]="project.image"
-                      [alt]="project.imageAlt"
-                      class="h-full w-full object-cover"
-                      [attr.loading]="index < 2 ? 'eager' : 'lazy'"
-                    />
-                  </div>
+                  <svg
+                    [lucideIcon]="project.icon"
+                    class="project-card__image-inner h-14 w-14"
+                    [style.color]="project.tint"
+                    [attr.stroke-width]="1.5"
+                    aria-hidden="true"
+                  ></svg>
                 </div>
 
                 <div class="flex flex-col gap-2.5 px-1 pb-1">
@@ -84,11 +91,11 @@ const FEATURED_COUNT = 4;
                   </p>
                 </div>
 
-                <p class="text-foreground/50 px-1 pb-2 text-[12px] tracking-tight">
+                <p class="text-foreground/50 px-1 pb-2 font-mono text-[12px] tracking-tight">
                   {{ project.meta }}
                 </p>
               </article>
-            </div>
+            </a>
           }
         </div>
 
@@ -115,12 +122,16 @@ export class ProjectsComponent {
   readonly withHeadline = input(false);
   readonly viewMoreVisible = input(false);
 
-  protected readonly icons = { ArrowRight: LucideArrowRight };
+  protected readonly icons = { ArrowRight: LucideArrowRight, ArrowUpRight: LucideArrowUpRight };
   protected readonly items = computed<Project[]>(() =>
     this.viewMoreVisible() ? projects.slice(0, FEATURED_COUNT) : projects,
   );
 
   protected delay(index: number): number {
     return Math.min(index * FADE_STEP_MS, FADE_MAX_MS);
+  }
+
+  protected panel(project: Project): string {
+    return `linear-gradient(135deg, ${project.tint}1f, ${project.tint}08)`;
   }
 }

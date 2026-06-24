@@ -1,15 +1,18 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LucideDynamicIcon, LucideMail } from '@lucide/angular';
+import type { LucideIcon } from '@lucide/angular';
 
-import { emailAddress } from '../../portfolio-data';
+import { OWNER } from '../../profile';
+import { simpleIconUrl } from '../../portfolio-data';
 import { ShaderFlowComponent } from '../shaders/shader-flow.component';
 import { CtaRowComponent } from '../ui/cta-row.component';
 
 type SocialLink = {
   href: string;
   label: string;
-  img?: string;
   external?: boolean;
+  icon?: LucideIcon;
+  img?: string;
 };
 
 @Component({
@@ -43,8 +46,8 @@ type SocialLink = {
                 <p
                   class="text-foreground/65 mb-6 max-w-[29ch] text-[18px] leading-[1.4] tracking-tight sm:text-[22px]"
                 >
-                  I'm always open to discussing new projects, creative ideas, or opportunities to be
-                  part of your visions. Just reach out!
+                  Open to full-stack C# / .NET and Angular roles, freelance, and collaboration.
+                  Based in Vienna — happy to talk remote or on-site.
                 </p>
                 <app-cta-row label="See projects" />
               </div>
@@ -65,16 +68,16 @@ type SocialLink = {
                         <img
                           [src]="social.img"
                           alt=""
-                          width="14"
-                          height="14"
+                          width="16"
+                          height="16"
                           aria-hidden="true"
-                          class="max-h-[14px] max-w-[14px] object-contain dark:invert"
+                          class="h-4 w-4 object-contain dark:invert"
                         />
                       } @else {
                         <svg
-                          [lucideIcon]="icons.Mail"
+                          [lucideIcon]="social.icon!"
                           class="h-4 w-4"
-                          [strokeWidth]="2.5"
+                          [strokeWidth]="2"
                           aria-hidden="true"
                         ></svg>
                       }
@@ -83,7 +86,7 @@ type SocialLink = {
                 </div>
                 <div class="flex flex-col items-center gap-1 text-center">
                   <p class="text-foreground/70 text-[13px] tracking-tight">
-                    2026 &copy; Built with Angular
+                    &copy; 2026 Alexander Nachtmann · Built with Angular
                   </p>
                 </div>
               </div>
@@ -95,10 +98,9 @@ type SocialLink = {
   `,
 })
 export class ContactCardComponent {
-  protected readonly icons = { Mail: LucideMail };
   protected readonly socials: readonly SocialLink[] = [
-    { href: `mailto:${emailAddress}`, label: 'Email' },
-    { href: 'https://www.linkedin.com', label: 'LinkedIn', img: '/linkedin.svg', external: true },
-    { href: 'https://x.com', label: 'X', img: '/x.svg', external: true },
+    { href: `mailto:${OWNER.email}`, label: 'Email', icon: LucideMail },
+    { href: OWNER.github, label: 'GitHub', img: simpleIconUrl('github'), external: true },
+    { href: OWNER.linkedin, label: 'LinkedIn', img: simpleIconUrl('linkedin'), external: true },
   ];
 }

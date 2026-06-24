@@ -11,17 +11,18 @@ import {
 describe('portfolio content', () => {
   it('keeps the routed portfolio sections populated', () => {
     expect(projects.length).toBeGreaterThanOrEqual(6);
-    expect(experienceEntries.length).toBeGreaterThanOrEqual(3);
-    expect(educationEntries.length).toBeGreaterThanOrEqual(3);
-    expect(skills).toContain('TypeScript & Angular');
-    expect(stackChips.some((chip) => chip.label === 'Angular')).toBe(true);
+    expect(experienceEntries.length).toBeGreaterThanOrEqual(2);
+    expect(educationEntries.length).toBeGreaterThanOrEqual(2);
+    expect(skills).toContain('Angular');
+    expect(stackChips.some((chip) => chip.label === '.NET')).toBe(true);
   });
 
-  it('provides icons and accessible image text for every project', () => {
+  it('gives every project an icon, a link, and accessible text', () => {
     for (const project of projects) {
       expect(project.icon).toBeDefined();
-      expect(project.image).toMatch(/^https?:\/\//);
-      expect(project.imageAlt.length).toBeGreaterThan(8);
+      expect(project.url).toMatch(/^https?:\/\//);
+      expect(project.title.length).toBeGreaterThan(8);
+      expect(project.description.length).toBeGreaterThan(8);
     }
   });
 });
