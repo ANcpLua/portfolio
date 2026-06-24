@@ -33,13 +33,13 @@ const FEATURED_COUNT = 4;
           </div>
         }
 
-        <div class="columns-1 gap-6 md:columns-2 md:gap-7">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7">
           @for (project of items(); track project.id; let index = $index) {
             <a
               [href]="project.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="fade-in mb-6 block break-inside-avoid md:mb-7"
+              class="fade-in block"
               [style.--fade-delay]="delay(index) + 'ms'"
             >
               <article
