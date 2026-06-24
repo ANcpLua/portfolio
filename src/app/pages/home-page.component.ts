@@ -13,7 +13,7 @@ import { ProjectsComponent } from '../components/projects/projects.component';
     <main id="main-content" tabindex="-1" class="flex flex-1 flex-col gap-20 sm:gap-28">
       <app-hero />
       <app-ai-assistant />
-      <app-projects [withHeadline]="true" [viewMoreVisible]="true" />
+      <app-projects [withHeadline]="true" [viewMoreVisible]="false" />
       <app-contact-card />
       <div class="h-12 sm:h-16"></div>
     </main>

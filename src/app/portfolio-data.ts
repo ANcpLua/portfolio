@@ -5,7 +5,9 @@ import {
   LucidePaintbrush,
   LucidePalette,
   LucideRadioTower,
+  LucideScan,
   LucideShieldCheck,
+  LucideWaypoints,
   LucideZap,
   type LucideIcon,
 } from '@lucide/angular';
@@ -42,6 +44,17 @@ export const projects: Project[] = [
     tint: '#e26d9a',
   },
   {
+    id: 'dicom-fhir',
+    icon: LucideScan,
+    name: 'dicom-fhir-viewer',
+    title: 'DICOM viewer with FHIR resources',
+    description:
+      'Upload DICOM scans, browse studies, and view medical images with window/level controls — plus auto-generated FHIR R4 resources. Hono + React + Orthanc.',
+    meta: 'Medical imaging · React · FHIR R4',
+    url: 'https://github.com/ANcpLua/dicom-fhir-viewer',
+    tint: '#22b8cf',
+  },
+  {
     id: 'tourplanner',
     icon: LucideMap,
     name: 'TourPlanner-Angular',
@@ -62,6 +75,17 @@ export const projects: Project[] = [
     meta: 'RabbitMQ · pub/sub · published',
     url: 'https://github.com/ANcpLua/SWEN3.Paperless.RabbitMq',
     tint: '#ff6600',
+  },
+  {
+    id: 'otel-semconv',
+    icon: LucideWaypoints,
+    name: 'Qyl.OpenTelemetry.SemanticConventions',
+    title: 'OpenTelemetry semantic conventions for .NET',
+    description:
+      'Stable and incubating runtime constants, a source generator, analyzers, and a Nuke build component — typed OTel semantic conventions for C#.',
+    meta: 'OpenTelemetry · C# · source generator',
+    url: 'https://github.com/ANcpLua/Qyl.OpenTelemetry.SemanticConventions',
+    tint: '#8b5cf6',
   },
   {
     id: 'agents',
@@ -211,16 +235,36 @@ export const stackChips: StackChip[] = [
   { label: 'NuGet', slug: 'nuget', bg: '#004880', fg: '#ffffff' },
 ];
 
-export type Polaroid = {
-  id: string;
-  rotate: number;
+export type Certification = {
+  title: string;
+  issuer: string;
+  image: string;
+  url: string;
 };
 
-export const polaroids: Polaroid[] = [
-  { id: 'a', rotate: -8 },
-  { id: 'b', rotate: 6 },
-  { id: 'c', rotate: -4 },
-  { id: 'd', rotate: 7 },
-  { id: 'e', rotate: -6 },
-  { id: 'f', rotate: 5 },
+export const certifications: Certification[] = [
+  {
+    title: 'AI Skills Fest 2026',
+    issuer: 'Microsoft',
+    image: '/badges/ai-skills-fest.webp',
+    url: 'https://www.credly.com/badges/9ed38dee-3ed1-41f7-a078-5f0a078a12ab/public_url',
+  },
+  {
+    title: 'Agents League · Creative Apps',
+    issuer: 'Global AI Community',
+    image: '/badges/agents-creative.webp',
+    url: 'https://globalai.community/badges/bd5f6d68-3a1c-48f2-94e8-30bfbd62260b/',
+  },
+  {
+    title: 'Agents League · Reasoning Agents',
+    issuer: 'Global AI Community',
+    image: '/badges/agents-reasoning.webp',
+    url: 'https://globalai.community/badges/023084b4-1e00-45b6-9217-0dd08eb1778b/',
+  },
+  {
+    title: 'Agents League · Enterprise Agents',
+    issuer: 'Global AI Community',
+    image: '/badges/agents-enterprise.webp',
+    url: 'https://globalai.community/badges/66d70a3c-7790-43b6-a26a-5936867b7b99/',
+  },
 ];

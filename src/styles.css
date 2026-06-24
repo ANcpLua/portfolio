@@ -235,33 +235,6 @@ html[data-theme-anim='1']::view-transition-new(root) {
   filter: grayscale(100%);
 }
 
-.dotted-pattern {
-  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
-  background-size: var(--dot-size, 10px) var(--dot-size, 10px);
-}
-
-.polaroid-card {
-  --tx: 0px;
-  --ty: 0px;
-  transform: translate3d(var(--tx), var(--ty), 0) rotate(var(--rotate));
-  animation: polaroid-drop 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--delay);
-  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes polaroid-drop {
-  from {
-    opacity: 0;
-    filter: blur(18px);
-    transform: translate3d(var(--tx), calc(var(--ty) - 120px), 0) rotate(var(--rotate));
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translate3d(var(--tx), var(--ty), 0) rotate(var(--rotate));
-  }
-}
-
 .contact-button-label {
   animation: blur-in 350ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }

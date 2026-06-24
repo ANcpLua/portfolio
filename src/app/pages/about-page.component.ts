@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { EducationComponent } from '../components/about/education.component';
 import { ExperienceComponent } from '../components/about/experience.component';
-import { PolaroidStripComponent } from '../components/about/polaroid-strip.component';
+import { CertificationsStripComponent } from '../components/about/certifications-strip.component';
 import { SkillsComponent } from '../components/about/skills.component';
 import { StackComponent } from '../components/about/stack.component';
 import { ContactCardComponent } from '../components/contact/contact-card.component';
@@ -13,7 +13,7 @@ import { ContactCardComponent } from '../components/contact/contact-card.compone
     ContactCardComponent,
     EducationComponent,
     ExperienceComponent,
-    PolaroidStripComponent,
+    CertificationsStripComponent,
     SkillsComponent,
     StackComponent,
   ],
@@ -21,7 +21,7 @@ import { ContactCardComponent } from '../components/contact/contact-card.compone
   template: `
     <main id="main-content" tabindex="-1" class="flex flex-1 flex-col">
       <section class="mx-auto w-full max-w-312 pt-40 sm:pt-56">
-        <app-polaroid-strip />
+        <app-certifications-strip />
       </section>
 
       <section class="mx-auto w-full max-w-160 px-6 pt-20 pb-16 sm:px-10 sm:pt-28 sm:pb-24">
