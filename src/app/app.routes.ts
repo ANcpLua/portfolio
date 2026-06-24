@@ -8,17 +8,17 @@ export const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
-    title: 'Home | Portfolio',
+    title: 'Home · Alexander Nachtmann',
   },
   {
     path: 'projects',
     component: ProjectsPageComponent,
-    title: 'Projects | Portfolio',
+    title: 'Projects · Alexander Nachtmann',
   },
   {
     path: 'about',
     component: AboutPageComponent,
-    title: 'About | Portfolio',
+    title: 'About · Alexander Nachtmann',
   },
   {
     path: '**',

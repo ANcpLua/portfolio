@@ -105,6 +105,7 @@ export class NavComponent {
   private readonly list = viewChild<ElementRef<HTMLUListElement>>('list');
   private readonly navItemRefs = viewChildren<ElementRef<HTMLLIElement>>('navItem');
   private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor() {
     // Re-measure the active pill once the nav items render (and if they ever change).
@@ -120,9 +121,11 @@ export class NavComponent {
       )
       .subscribe(() => this.scheduleMeasure());
 
-    const onResize = (): void => this.scheduleMeasure();
-    window.addEventListener('resize', onResize);
-    inject(DestroyRef).onDestroy(() => window.removeEventListener('resize', onResize));
+    if (typeof window !== 'undefined') {
+      const onResize = (): void => this.scheduleMeasure();
+      window.addEventListener('resize', onResize);
+      this.destroyRef.onDestroy(() => window.removeEventListener('resize', onResize));
+    }
   }
 
   protected isActive(href: string): boolean {
@@ -135,6 +138,9 @@ export class NavComponent {
   }
 
   private scheduleMeasure(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
     window.requestAnimationFrame(() => this.measure());
   }
 

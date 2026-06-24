@@ -1,14 +1,17 @@
 import {
   LucideBot,
-  LucideChartLine,
-  LucideCompass,
-  LucideLayers,
-  LucideSparkles,
-  LucideWandSparkles,
+  LucideMap,
+  LucidePackage,
+  LucidePalette,
+  LucideRadioTower,
+  LucideShieldCheck,
+  LucideZap,
   type LucideIcon,
 } from '@lucide/angular';
 
-export const emailAddress = 'hello@example.com';
+import { OWNER } from './profile';
+
+export const emailAddress = OWNER.email;
 
 export const SIMPLE_ICONS_BASE = 'https://cdn.simpleicons.org/';
 
@@ -17,96 +20,91 @@ export const simpleIconUrl = (slug: string): string => `${SIMPLE_ICONS_BASE}${sl
 export type Project = {
   id: string;
   icon: LucideIcon;
-  iconLabel: string;
+  name: string;
   title: string;
   description: string;
   meta: string;
-  imageRatio: number;
-  image: string;
-  imageAlt: string;
+  url: string;
+  tint: string;
 };
 
 export const projects: Project[] = [
   {
-    id: 'loom',
-    icon: LucideSparkles,
-    iconLabel: 'LOOM',
-    title:
-      'An AI writing companion that thinks alongside you, allowing you to capture ideas, edits, and drafts in one focused space.',
+    id: 'tourplanner',
+    icon: LucideMap,
+    name: 'TourPlanner-Angular',
+    title: 'Angular 21 SPA on a .NET 10 API',
     description:
-      'I designed Loom, a focused writing surface where ideas, edits, and drafts coexist without the chat clutter.',
-    meta: 'Design Engineer, 2024',
-    imageRatio: 752 / 497,
-    image:
-      'https://cdn.dribbble.com/userupload/46128964/file/b92b9d268dd928642ca94bd49e32923a.jpg?resize=752x497&vertical=center',
-    imageAlt: 'Loom AI writing companion mockup',
+      'A full tour-planning single-page app with an OpenAPI-typed client against a .NET 10 backend — 429 tests across NUnit and Vitest, fully Dockerised.',
+    meta: 'Angular 21 · .NET 10 · 429 tests',
+    url: 'https://github.com/ANcpLua/TourPlanner-Angular',
+    tint: '#dd0031',
   },
   {
-    id: 'atlas',
-    icon: LucideCompass,
-    iconLabel: 'Atlas Studio',
-    title: 'A two week brand and product sprint for a creative studio.',
+    id: 'paperless-rabbitmq',
+    icon: LucideRadioTower,
+    name: 'SWEN3.Paperless.RabbitMq',
+    title: 'Event-driven messaging pipeline',
     description:
-      'End to end identity, marketing site, and a small product surface designed to feel quietly confident across every touchpoint.',
-    meta: 'Product & Brand Designer, 2025',
-    imageRatio: 1024 / 768,
-    image:
-      'https://cdn.dribbble.com/userupload/24599416/file/original-1ae5075dcd129aebb16bdbca24b41ac7.png?resize=1024x768&vertical=center',
-    imageAlt: 'Atlas Studio brand and product sprint mockup',
+      'Document-management ingestion and processing on typed RabbitMQ pub/sub consumers — a published package and a favourite playground for event-driven design.',
+    meta: 'RabbitMQ · pub/sub · published',
+    url: 'https://github.com/ANcpLua/SWEN3.Paperless.RabbitMq',
+    tint: '#ff6600',
   },
   {
-    id: 'rhythm',
-    icon: LucideChartLine,
-    iconLabel: 'Rhythm',
-    title: 'Calm analytics for indie founders.',
-    description:
-      'A weekly digest that turns raw product data into a simple narrative. Built so you can read it on a Sunday with coffee.',
-    meta: 'Founder & Designer, 2024',
-    imageRatio: 1024 / 768,
-    image:
-      'https://cdn.dribbble.com/userupload/47357856/file/75841fa59f32f05ca6c5ddf02d08dfe6.png?resize=1024x768&vertical=center',
-    imageAlt: 'Rhythm calm analytics mockup',
-  },
-  {
-    id: 'groove',
-    icon: LucideWandSparkles,
-    iconLabel: 'Groove',
-    title:
-      'Reimagining the booking flow for a music school, asisting thousands of students in finding the right lessons.',
-    description:
-      'I led a redesign of the lesson booking experience, cutting drop off in half and making the schedule feel like a calendar people actually want to open.',
-    meta: 'Lead Designer, 2023',
-    imageRatio: 1024 / 768,
-    image:
-      'https://cdn.dribbble.com/userupload/43955214/file/original-d4cde1de803e84b97d8892e3444c04b0.png?resize=1024x768&vertical=center',
-    imageAlt: 'Groove music school booking flow mockup',
-  },
-  {
-    id: 'fieldnote',
-    icon: LucideLayers,
-    iconLabel: 'Fieldnote',
-    title:
-      'A pocket sized research tool for design teams that want to get out of their docs and into the world.',
-    description:
-      'Capture quotes, tag patterns, and synthesize themes in one place. The interface stays out of the way so the thinking can happen.',
-    meta: 'Design Engineer, 2024',
-    imageRatio: 1024 / 768,
-    image:
-      'https://cdn.dribbble.com/userupload/30310902/file/original-621e7fe47be9d11ee14544456c693bec.png?resize=1024x768&vertical=center',
-    imageAlt: 'Fieldnote pocket sized research tool mockup',
-  },
-  {
-    id: 'talkback',
+    id: 'agents',
     icon: LucideBot,
-    iconLabel: 'Talkback',
-    title: 'A friendlier interface for talking to language models.',
+    name: 'ANcpLua.Agents',
+    title: 'C#-native LLM agent framework',
     description:
-      'An exploration of how AI chat could feel less like a terminal and more like a conversation with a curious friend.',
-    meta: 'Independent Project, 2025',
-    imageRatio: 1024 / 768,
-    image:
-      'https://cdn.dribbble.com/userupload/16560717/file/original-c6f745d50302d66609bfe080f99f5396.png?resize=1024x768&vertical=center',
-    imageAlt: 'Talkback friendlier AI chat interface mockup',
+      'An agent runtime, workflows, and provider hosting (OpenAI, Anthropic, Azure AI Foundry) on the Microsoft Agent Framework, with deterministic testing primitives — 12 packages.',
+    meta: 'C# · Microsoft Agent Framework · 12 packages',
+    url: 'https://github.com/ANcpLua/ANcpLua.Agents',
+    tint: '#7c5cff',
+  },
+  {
+    id: 'sdk',
+    icon: LucidePackage,
+    name: 'ANcpLua.NET.Sdk',
+    title: 'Opinionated MSBuild SDK',
+    description:
+      'Configures .NET projects from the first build — analyzers, nullable, and polyfills auto-injected. Three variants: Base, Web, Test.',
+    meta: 'MSBuild SDK · analyzers · polyfills',
+    url: 'https://github.com/ANcpLua/ANcpLua.NET.Sdk',
+    tint: '#512bd4',
+  },
+  {
+    id: 'analyzers',
+    icon: LucideShieldCheck,
+    name: 'ANcpLua.Analyzers',
+    title: '89 Roslyn diagnostics with code fixes',
+    description:
+      'Diagnostics AL1000–AL1899 across nine domains — correctness, reliability, async/threading, AOT/trim safety, ASP.NET Core, and OpenTelemetry — each with a code fix.',
+    meta: 'Roslyn · 89 diagnostics + fixes',
+    url: 'https://github.com/ANcpLua/ANcpLua.Analyzers',
+    tint: '#2b9348',
+  },
+  {
+    id: 'errororx',
+    icon: LucideZap,
+    name: 'ErrorOrX',
+    title: 'Source generator for Minimal APIs',
+    description:
+      'Generates ASP.NET Core Minimal API endpoints with routing, validation, RFC 9457 problem details, OpenAPI metadata, and Native AOT support.',
+    meta: 'Source generator · RFC 9457 · AOT',
+    url: 'https://github.com/ANcpLua/ErrorOrX',
+    tint: '#f4a259',
+  },
+  {
+    id: 'ghostty',
+    icon: LucidePalette,
+    name: 'ghostty-theme-catalog',
+    title: 'Interactive 463-theme browser',
+    description:
+      'A keyboard-driven catalog of 463 Ghostty themes with fuzzy search and live config apply — shipped on GitHub Pages.',
+    meta: 'Interactive · fuzzy search · live apply',
+    url: 'https://github.com/ANcpLua/ghostty-theme-catalog',
+    tint: '#3a86ff',
   },
 ];
 
@@ -118,21 +116,26 @@ export type ExperienceEntry = {
   brand?: string;
 };
 
-// `brand` is the icon-tile background colour used only for slug-less rows
-// (those without a simpleicons logo); rows with a `slug` render the logo instead.
+// `brand` is the icon-tile background colour used for slug-less rows (no simpleicons logo).
 export const experienceEntries: ExperienceEntry[] = [
   {
-    company: 'Linear',
-    role: 'Senior Design Engineer',
-    period: 'Mar 2024 - Present',
-    slug: 'linear',
+    company: 'RUBICON IT GmbH',
+    role: 'Fullstack C# Software Developer · dual study',
+    period: 'Aug 2023 – Jun 2025',
+    brand: '#512bd4',
   },
-  { company: 'Vercel', role: 'Product Designer', period: 'Aug 2022 - Feb 2024', slug: 'vercel' },
-  { company: 'Stripe', role: 'Design Engineer', period: 'Jun 2021 - Jul 2022', slug: 'stripe' },
-  { company: 'Figma', role: 'UI Engineer', period: 'Sep 2019 - May 2021', slug: 'figma' },
-  { company: 'Notion', role: 'Product Designer', period: 'Jan 2018 - Aug 2019', slug: 'notion' },
-  { company: 'Airbnb', role: 'Design Intern', period: 'May 2017 - Dec 2017', slug: 'airbnb' },
-  { company: 'Freelance', role: 'Designer & Developer', period: '2015 - 2017', brand: '#0AE448' },
+  {
+    company: 'ANcpLua .NET Ecosystem',
+    role: 'Open source · 48 packages, 340k+ downloads',
+    period: 'May 2024 – Present',
+    slug: 'nuget',
+  },
+  {
+    company: 'Autotransport & Mietwagen GmbH',
+    role: 'Commercial Director',
+    period: 'Dec 2015 – Mar 2021',
+    brand: '#0a0a0a',
+  },
 ];
 
 export type EducationEntry = {
@@ -144,32 +147,31 @@ export type EducationEntry = {
 
 export const educationEntries: EducationEntry[] = [
   {
-    school: 'Rhode Island School of Design',
-    degree: 'BFA, Graphic Design',
-    period: '2013 - 2017',
+    school: 'FH Technikum Wien',
+    degree: 'M.Sc. Software Engineering (in progress) · GPA 1.0',
+    period: '2025 – 2027',
   },
   {
-    school: 'Stanford University',
-    degree: 'HCI Certificate, d.school',
-    period: '2018',
-  },
-  {
-    school: "Bruno Simon's Three.js Journey",
-    degree: 'WebGL & Shaders',
-    period: '2022',
+    school: 'FH Technikum Wien',
+    degree: 'B.Sc. Computer Science',
+    period: '2022 – 2025',
   },
 ];
 
 export const skills: readonly string[] = [
-  'UI/UX Design',
-  'Design Systems',
-  'Prototyping & Motion',
-  'Frontend Development',
-  'TypeScript & Angular',
-  'Interaction Design',
-  'Performance Tuning',
-  'Accessibility',
-  'Visual Identity',
+  'C# / .NET',
+  'ASP.NET Core',
+  'Angular',
+  'React & Vue',
+  'TypeScript',
+  'Messaging & Event-Driven (RabbitMQ)',
+  'Observability (OpenTelemetry)',
+  'Roslyn Analyzers & Source Generators',
+  'EF Core · PostgreSQL',
+  'REST / OpenAPI',
+  'LLM Agent Infrastructure',
+  'Testing (xUnit · NUnit · Vitest)',
+  'Docker · Kubernetes · Terraform',
 ];
 
 export type StackChip = {
@@ -181,21 +183,20 @@ export type StackChip = {
 };
 
 export const stackChips: StackChip[] = [
-  {
-    label: 'Figma',
-    slug: 'figma',
-    bg: '#1f1f1f',
-    fg: '#ffffff',
-    iconUrl: 'https://svgl.app/library/figma.svg',
-  },
+  { label: '.NET', slug: 'dotnet', bg: '#512BD4', fg: '#ffffff' },
   { label: 'Angular', slug: 'angular', bg: '#dd0031', fg: '#ffffff' },
   { label: 'TypeScript', slug: 'typescript', bg: '#2F74C0', fg: '#ffffff' },
-  { label: 'Tailwind CSS', slug: 'tailwindcss', bg: '#2BBCF5', fg: '#ffffff' },
-  { label: 'OGL', slug: 'webgl', bg: '#5b54ff', fg: '#ffffff' },
-  { label: 'Matter.js', slug: 'javascript', bg: '#f7df1e', fg: '#0a0a0a' },
+  { label: 'React', slug: 'react', bg: '#20232a', fg: '#61dafb' },
+  { label: 'Vue', slug: 'vuedotjs', bg: '#35495e', fg: '#42b883' },
+  { label: 'PostgreSQL', slug: 'postgresql', bg: '#336791', fg: '#ffffff' },
+  { label: 'Docker', slug: 'docker', bg: '#2496ED', fg: '#ffffff' },
+  { label: 'RabbitMQ', slug: 'rabbitmq', bg: '#ff6600', fg: '#ffffff' },
+  { label: 'OpenTelemetry', slug: 'opentelemetry', bg: '#111111', fg: '#ffffff' },
+  { label: 'Kubernetes', slug: 'kubernetes', bg: '#326CE5', fg: '#ffffff' },
+  { label: 'Terraform', slug: 'terraform', bg: '#7B42BC', fg: '#ffffff' },
+  { label: 'GitHub Actions', slug: 'githubactions', bg: '#2088FF', fg: '#ffffff' },
   { label: 'GitHub', slug: 'github', bg: '#181717', fg: '#ffffff' },
-  { label: 'Vercel', slug: 'vercel', bg: '#0a0a0a', fg: '#ffffff' },
-  { label: 'Cursor', slug: 'cursor', bg: '#111111', fg: '#ffffff' },
+  { label: 'NuGet', slug: 'nuget', bg: '#004880', fg: '#ffffff' },
 ];
 
 export type Polaroid = {
