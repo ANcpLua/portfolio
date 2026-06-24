@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { LucideDynamicIcon, LucideMail } from '@lucide/angular';
+import { LucideDynamicIcon } from '@lucide/angular';
 import type { LucideIcon } from '@lucide/angular';
 
 import { OWNER } from '../../profile';
@@ -114,7 +114,6 @@ const LINKEDIN_PATH =
 })
 export class ContactCardComponent {
   protected readonly socials: readonly SocialLink[] = [
-    { href: `mailto:${OWNER.email}`, label: 'Email', icon: LucideMail },
     { href: OWNER.github, label: 'GitHub', img: simpleIconUrl('github'), external: true },
     { href: OWNER.linkedin, label: 'LinkedIn', svgPath: LINKEDIN_PATH, external: true },
     { href: OWNER.nuget, label: 'NuGet', img: simpleIconUrl('nuget'), external: true },
