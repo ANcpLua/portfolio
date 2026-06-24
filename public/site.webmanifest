@@ -1,0 +1,21 @@
+{
+  "name": "Portfolio",
+  "short_name": "Portfolio",
+  "description": "A modern, accessible portfolio template built with Angular, Tailwind CSS, and TypeScript.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0066ff",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}
