@@ -66,7 +66,7 @@ import { ContactCardComponent } from '../components/contact/contact-card.compone
                 <strong class="text-foreground font-semibold">laziness</strong>,
                 <strong class="text-foreground font-semibold">impatience</strong>, and
                 <strong class="text-foreground font-semibold">hubris</strong>: automate the toil,
-                anticipate the need, ship code worth bragging about. Open to full-stack
+                anticipate the need, ship code no one can fault. Open to full-stack
                 <strong class="text-foreground font-semibold">C# &amp; TypeScript</strong> work.
               </p>
             </div>
