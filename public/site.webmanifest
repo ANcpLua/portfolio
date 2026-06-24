@@ -1,7 +1,7 @@
 {
   "name": "Alexander Nachtmann — Portfolio",
   "short_name": "Nachtmann",
-  "description": "Portfolio of Alexander Nachtmann — full-stack C# / .NET & Angular engineer in Vienna.",
+  "description": "Portfolio of Alexander Nachtmann — full-stack C# / .NET engineer in Vienna, frontend in React & Angular.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

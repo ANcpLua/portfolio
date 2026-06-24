@@ -52,7 +52,7 @@ const LINKEDIN_PATH =
                 <p
                   class="text-foreground/65 mb-6 max-w-[29ch] text-[18px] leading-[1.4] tracking-tight sm:text-[22px]"
                 >
-                  Open to full-stack C# / .NET and Angular roles, freelance, and collaboration.
+                  Open to full-stack C# / .NET and React/Angular roles, freelance, and collaboration.
                   Based in Vienna — happy to talk remote or on-site.
                 </p>
                 <app-cta-row label="See projects" />
