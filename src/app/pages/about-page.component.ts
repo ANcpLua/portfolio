@@ -61,13 +61,12 @@ import { ContactCardComponent } from '../components/contact/contact-card.compone
               <p>
                 I'm currently finishing an
                 <strong class="text-foreground font-semibold">M.Sc. in Software Engineering</strong>
-                (GPA 1.0), serve as a study-program representative, and lecture C# externally. I
-                work by Larry Wall's three virtues —
-                <strong class="text-foreground font-semibold">laziness</strong> (automate the toil),
-                <strong class="text-foreground font-semibold">impatience</strong> (anticipate, don't
-                just react), and
-                <strong class="text-foreground font-semibold">hubris</strong> (code no one wants to
-                badmouth). Open to full-stack
+                (GPA 1.0), represent my study program, and lecture C# on the side. My playbook is
+                Larry Wall's three virtues —
+                <strong class="text-foreground font-semibold">laziness</strong>,
+                <strong class="text-foreground font-semibold">impatience</strong>, and
+                <strong class="text-foreground font-semibold">hubris</strong>: automate the toil,
+                anticipate the need, ship code nobody can badmouth. Open to full-stack
                 <strong class="text-foreground font-semibold">C# &amp; Angular</strong> work.
               </p>
             </div>
