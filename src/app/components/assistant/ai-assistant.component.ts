@@ -24,7 +24,7 @@ const SUGGESTIONS = [
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section
-      class="mx-auto my-16 flex w-full max-w-2xl flex-col items-center px-6 text-center sm:my-24"
+      class="mx-auto mt-2 mb-16 flex w-full max-w-2xl flex-col items-center px-6 text-center sm:mt-4 sm:mb-24"
     >
       <div class="relative mb-5 flex h-12 w-12 items-center justify-center">
         <span class="border-foreground/15 absolute inset-0 rounded-full border"></span>

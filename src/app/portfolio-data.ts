@@ -2,6 +2,7 @@ import {
   LucideBot,
   LucideMap,
   LucidePackage,
+  LucidePaintbrush,
   LucidePalette,
   LucideRadioTower,
   LucideShieldCheck,
@@ -29,6 +30,17 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: 'atelierbella',
+    icon: LucidePaintbrush,
+    name: 'atelierbella.art',
+    title: 'Design-forward artist portfolio',
+    description:
+      'A polished, design-led portfolio I built and shipped for an artist — calm typography, considered motion, and a distinctive look.',
+    meta: 'Live site · design-led frontend',
+    url: 'https://atelierbella.art/',
+    tint: '#e26d9a',
+  },
   {
     id: 'tourplanner',
     icon: LucideMap,

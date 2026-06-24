@@ -9,7 +9,7 @@ import { PortraitMorphComponent } from './portrait-morph.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="relative w-full">
-      <div class="mx-auto w-full max-w-275 px-6 pt-44 pb-24 sm:px-10 sm:pt-56 sm:pb-32">
+      <div class="mx-auto w-full max-w-275 px-6 pt-44 pb-10 sm:px-10 sm:pt-56 sm:pb-16">
         <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-8">
           <div class="fade-in flex flex-col gap-4">
             <p class="text-foreground text-[20px] leading-tight font-medium tracking-tight">

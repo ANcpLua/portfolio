@@ -13,7 +13,9 @@ import { OWNER, PROFILE_CONTEXT } from './app/profile';
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+// Behind Railway's proxy the public host arrives via X-Forwarded-Host; trust it so
+// SSR runs instead of falling back to CSR. Allowed hosts come from NG_ALLOWED_HOSTS.
+const angularApp = new AngularNodeAppEngine({ trustProxyHeaders: true });
 
 const MODEL = process.env['ANTHROPIC_MODEL'] || 'claude-sonnet-4-6';
 const MAX_TOKENS = 1200;
