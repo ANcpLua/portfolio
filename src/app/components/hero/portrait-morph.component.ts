@@ -208,6 +208,18 @@ export class PortraitMorphComponent {
     const mesh = new Mesh(gl, { geometry, program });
     mesh.setParent(scene);
 
+    let raf = 0;
+    let last = performance.now();
+    let time = 0;
+    let running = true;
+    let visible = true;
+    let onScreen = true;
+    let hover = false;
+    let progress = 0;
+    let origin: Vec2 = [0.5, 0.5];
+    let direction: Vec2 = [1, 0];
+    let lastPointer: { x: number; y: number; time: number } | null = null;
+
     const resize = (): void => {
       const width = element.clientWidth;
       const height = element.clientHeight;
@@ -218,18 +230,16 @@ export class PortraitMorphComponent {
     resizeObserver.observe(element);
     resize();
 
-    let raf = 0;
-    let last = performance.now();
-    let time = 0;
-    let running = true;
-    let hover = false;
-    let progress = 0;
-    let origin: Vec2 = [0.5, 0.5];
-    let direction: Vec2 = [1, 0];
-    let lastPointer: { x: number; y: number; time: number } | null = null;
-
     const tick = (): void => {
       if (!running) {
+        return;
+      }
+      // Skip the GPU work while the hero is off-screen or the tab is hidden — the loop keeps
+      // ticking cheaply and resumes the moment it returns to view, so an out-of-view portrait
+      // never competes with scrolling. Mirrors the flow shader's visibility guards.
+      if (!visible || !onScreen) {
+        last = performance.now();
+        raf = window.requestAnimationFrame(tick);
         return;
       }
 
@@ -252,6 +262,21 @@ export class PortraitMorphComponent {
       renderer.render({ scene });
       raf = window.requestAnimationFrame(tick);
     };
+
+    const onVisibility = (): void => {
+      visible = document.visibilityState === 'visible';
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          onScreen = entry.isIntersecting;
+        }
+      },
+      { rootMargin: '100px' },
+    );
+    intersectionObserver.observe(element);
 
     const computeEdgeDirection = (x: number, y: number): Vec2 => {
       const dxLeft = x;
@@ -330,6 +355,8 @@ export class PortraitMorphComponent {
       running = false;
       window.cancelAnimationFrame(raf);
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
       element.removeEventListener('pointerenter', onPointerEnter);
       element.removeEventListener('pointerleave', onPointerLeave);
       element.removeEventListener('pointermove', onPointerMove);
