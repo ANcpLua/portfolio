@@ -22,7 +22,9 @@ export class SmoothScrollService {
 
     this.zone.runOutsideAngular(() => {
       this.lenis = new Lenis({
-        duration: 1.6,
+        // 1.0 keeps the glide smooth but cuts the post-input settle time (was 1.6, well above
+        // Lenis's 1.2 default) so scrolling tracks the wheel more tightly.
+        duration: 1.0,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         gestureOrientation: 'vertical',

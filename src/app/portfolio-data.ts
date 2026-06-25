@@ -166,12 +166,6 @@ export const experienceEntries: ExperienceEntry[] = [
     period: 'May 2024 – Present',
     slug: 'nuget',
   },
-  {
-    company: 'Autotransport & Mietwagen GmbH',
-    role: 'Commercial Director',
-    period: 'Dec 2015 – Mar 2021',
-    brand: '#0a0a0a',
-  },
 ];
 
 export type EducationEntry = {
@@ -207,7 +201,7 @@ export const skills: readonly string[] = [
   'REST / OpenAPI',
   'LLM Agent Infrastructure',
   'Testing (xUnit · NUnit · Vitest)',
-  'Docker · Kubernetes · Terraform',
+  'Docker · CI/CD',
 ];
 
 export type StackChip = {
@@ -228,8 +222,6 @@ export const stackChips: StackChip[] = [
   { label: 'Docker', slug: 'docker', bg: '#2496ED', fg: '#ffffff' },
   { label: 'RabbitMQ', slug: 'rabbitmq', bg: '#ff6600', fg: '#ffffff' },
   { label: 'OpenTelemetry', slug: 'opentelemetry', bg: '#111111', fg: '#ffffff' },
-  { label: 'Kubernetes', slug: 'kubernetes', bg: '#326CE5', fg: '#ffffff' },
-  { label: 'Terraform', slug: 'terraform', bg: '#7B42BC', fg: '#ffffff' },
   { label: 'GitHub Actions', slug: 'githubactions', bg: '#2088FF', fg: '#ffffff' },
   { label: 'GitHub', slug: 'github', bg: '#181717', fg: '#ffffff' },
   { label: 'NuGet', slug: 'nuget', bg: '#004880', fg: '#ffffff' },
