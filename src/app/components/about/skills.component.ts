@@ -7,10 +7,8 @@ import { skills } from '../../portfolio-data';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="flex flex-col gap-3">
-      <h3 class="text-foreground text-[15px] font-semibold tracking-tight">What I do</h3>
-      <div
-        class="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-4xl border p-2 sm:p-4"
-      >
+      <h3 class="section-heading">What I do</h3>
+      <div class="section-card p-2 sm:p-4">
         <div class="flex flex-wrap gap-3">
           @for (skill of items; track skill) {
             <span
