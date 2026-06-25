@@ -29,6 +29,8 @@ export type Project = {
   meta: string;
   url: string;
   tint: string;
+  /** A real screenshot of the live app (in /public/projects). Falls back to the icon when absent. */
+  image?: string;
 };
 
 export const projects: Project[] = [
@@ -42,6 +44,7 @@ export const projects: Project[] = [
     meta: 'Live site · design-led frontend',
     url: 'https://atelierbella.art/',
     tint: '#e26d9a',
+    image: '/projects/atelierbella.jpg',
   },
   {
     id: 'dicom-fhir',
@@ -75,6 +78,7 @@ export const projects: Project[] = [
     meta: 'Interactive · fuzzy search · live apply',
     url: 'https://github.com/ANcpLua/ghostty-theme-catalog',
     tint: '#3a86ff',
+    image: '/projects/ghostty.jpg',
   },
   {
     id: 'otel-semconv',
