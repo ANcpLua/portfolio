@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   ElementRef,
+  computed,
   effect,
   inject,
   signal,
@@ -48,11 +50,14 @@ const SUGGESTIONS = [
         a job description.
       </p>
 
+      <!-- Screen readers hear settled output only (status + the final reply), never the
+           token-by-token stream, which would otherwise flood the polite queue. -->
+      <p class="sr-only" role="status" aria-live="polite">{{ announcement() }}</p>
+
       @if (messages().length || streaming() || loading()) {
         <div
           #scroller
           class="mt-8 flex max-h-[26rem] w-full flex-col gap-4 overflow-y-auto text-left"
-          aria-live="polite"
         >
           @for (message of messages(); track $index) {
             <div class="flex" [class.justify-end]="message.role === 'user'">
@@ -70,7 +75,7 @@ const SUGGESTIONS = [
           }
 
           @if (streaming()) {
-            <div class="flex">
+            <div class="flex" aria-hidden="true">
               <div
                 class="bg-foreground/4 dark:bg-foreground/8 text-foreground max-w-[88%] rounded-2xl px-4 py-2.5 text-[15px] leading-[1.55] tracking-tight whitespace-pre-wrap"
               >
@@ -143,9 +148,27 @@ export class AiAssistantComponent {
   protected readonly loading = signal(false);
   protected readonly error = signal<string | null>(null);
 
+  /** What screen readers should hear: a settled status line, never the live token stream. */
+  protected readonly announcement = computed(() => {
+    const error = this.error();
+    if (error) {
+      return error;
+    }
+    const messages = this.messages();
+    const latest = messages[messages.length - 1];
+    if (latest?.role === 'assistant') {
+      return latest.content;
+    }
+    return this.loading() ? 'Thinking…' : '';
+  });
+
   private readonly scroller = viewChild<ElementRef<HTMLElement>>('scroller');
+  private activeController?: AbortController;
 
   constructor() {
+    // Stop generating (and stop paying for) tokens if the visitor navigates away mid-stream.
+    inject(DestroyRef).onDestroy(() => this.activeController?.abort());
+
     effect(() => {
       this.messages();
       this.streaming();
@@ -185,17 +208,30 @@ export class AiAssistantComponent {
     this.streaming.set('');
     this.loading.set(true);
 
+    const controller = new AbortController();
+    this.activeController = controller;
+
     try {
-      await this.assistant.streamChat(history, (chunk) =>
-        this.streaming.update((current) => current + chunk),
+      await this.assistant.streamChat(
+        history,
+        (chunk) => this.streaming.update((current) => current + chunk),
+        controller.signal,
       );
       const reply = this.streaming().trim();
       if (reply) {
         this.messages.update((current) => [...current, { role: 'assistant', content: reply }]);
       }
     } catch (error) {
+      // A deliberate cancellation (navigation away / destroy) is not a failure to surface.
+      if (
+        controller.signal.aborted ||
+        (error instanceof DOMException && error.name === 'AbortError')
+      ) {
+        return;
+      }
       this.error.set(typeof error === 'string' ? error : 'Something went wrong. Please try again.');
     } finally {
+      this.activeController = undefined;
       this.streaming.set('');
       this.loading.set(false);
     }

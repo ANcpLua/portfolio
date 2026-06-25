@@ -24,12 +24,10 @@ const wallPad = 16;
   template: `
     <div class="flex flex-col gap-3">
       <div class="flex items-center gap-3">
-        <h3 class="text-foreground text-[15px] font-semibold tracking-tight">Stack</h3>
+        <h3 class="section-heading">Stack</h3>
       </div>
 
-      <div
-        class="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative h-40 overflow-hidden rounded-4xl border sm:h-64"
-      >
+      <div class="section-card relative h-40 overflow-hidden sm:h-64">
         @if (!reducedMotion()) {
           <button
             type="button"
@@ -95,16 +93,21 @@ export class StackComponent {
   private destroyed = false;
 
   constructor() {
-    const reduce =
-      typeof window !== 'undefined' &&
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    this.reducedMotion.set(reduce);
-
     const destroyRef = inject(DestroyRef);
-    if (!reduce) {
-      afterNextRender(() => void this.start());
-    }
+
+    // Read prefers-reduced-motion only on the client, after the first render. The server
+    // renders with reducedMotion=false, so deferring the read keeps the initial client
+    // markup identical to the server's (no hydration mismatch) before flipping if needed.
+    afterNextRender(() => {
+      const reduce =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this.reducedMotion.set(reduce);
+      if (!reduce) {
+        void this.start();
+      }
+    });
+
     destroyRef.onDestroy(() => {
       this.destroyed = true;
       this.cleanup?.();

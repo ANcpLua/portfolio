@@ -250,6 +250,16 @@ html[data-theme-anim='1']::view-transition-new(root) {
   }
 }
 
+/* Shared chrome for the titled about-page sections (Experience, Education, What I do, Stack).
+   Per-section padding, height, and overflow stay inline as modifiers. */
+.section-heading {
+  @apply text-foreground text-[15px] font-semibold tracking-tight;
+}
+
+.section-card {
+  @apply border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-4xl border;
+}
+
 .experience-panel {
   transition:
     max-height 500ms cubic-bezier(0.22, 1, 0.36, 1),
