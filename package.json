@@ -14,7 +14,7 @@
   "private": true,
   "packageManager": "npm@10.9.8",
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "dependencies": {
     "@angular/common": "^21.2.0",
@@ -41,7 +41,7 @@
     "@tailwindcss/postcss": "4.3.1",
     "@types/express": "5.0.6",
     "@types/matter-js": "0.20.2",
-    "@types/node": "20.19.43",
+    "@types/node": "24.13.2",
     "jsdom": "28.1.0",
     "prettier": "3.8.4",
     "prettier-plugin-tailwindcss": "0.8.0",
