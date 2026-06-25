@@ -1,20 +1,13 @@
 # Dependencies
 node_modules
 
-# Build outputs
-.next
-out
-build
+# Build output
 dist
+.angular
 
-# Cache
-.cache
-
-# Package manager
-pnpm-lock.yaml
+# Lockfile (managed by npm, never reformat)
 package-lock.json
-yarn.lock
 
-# Generated files
+# Minified assets
 *.min.js
 *.min.css
