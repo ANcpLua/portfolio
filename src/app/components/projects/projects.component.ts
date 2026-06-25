@@ -69,13 +69,25 @@ const FEATURED_COUNT = 4;
                   class="project-card__image ring-foreground/5 relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-2xl ring-1"
                   [style.background]="panel(project)"
                 >
-                  <svg
-                    [lucideIcon]="project.icon"
-                    class="project-card__icon h-14 w-14"
-                    [style.color]="project.tint"
-                    [attr.stroke-width]="1.5"
-                    aria-hidden="true"
-                  ></svg>
+                  @if (project.image) {
+                    <img
+                      [src]="project.image"
+                      [alt]="project.name + ' — screenshot of the live app'"
+                      width="1280"
+                      height="800"
+                      loading="lazy"
+                      decoding="async"
+                      class="project-card__icon absolute inset-0 h-full w-full object-cover"
+                    />
+                  } @else {
+                    <svg
+                      [lucideIcon]="project.icon"
+                      class="project-card__icon h-14 w-14"
+                      [style.color]="project.tint"
+                      [attr.stroke-width]="1.5"
+                      aria-hidden="true"
+                    ></svg>
+                  }
                 </div>
 
                 <div class="flex flex-col gap-2.5 px-1 pb-1">
