@@ -12,7 +12,7 @@
     "serve:ssr:local": "ANTHROPIC_API_KEY=\"$(security find-generic-password -s ANTHROPIC_API_KEY -w 2>/dev/null)\" node dist/portfolio/server/server.mjs"
   },
   "private": true,
-  "packageManager": "npm@10.9.4",
+  "packageManager": "npm@10.9.8",
   "engines": {
     "node": "22.x"
   },
