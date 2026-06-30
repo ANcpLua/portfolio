@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img" aria-label="SWEN3.Paperless.RabbitMq — typed RabbitMQ pub/sub pipeline">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140b04"/><stop offset="1" stop-color="#0a0806"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.9">
+      <stop offset="0" stop-color="#ff6600" stop-opacity="0.26"/>
+      <stop offset="0.55" stop-color="#ff6600" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#ff6600" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15161d"/><stop offset="1" stop-color="#101117"/>
+    </linearGradient>
+    <linearGradient id="hub" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff6600" stop-opacity="0.22"/><stop offset="1" stop-color="#ff6600" stop-opacity="0.08"/>
+    </linearGradient>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="34" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#ff8a3d"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#dots)"/>
+  <rect width="1280" height="800" fill="url(#glow)"/>
+  <g filter="url(#soft)">
+    <rect x="80" y="96" width="1120" height="608" rx="28" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08"/>
+  </g>
+  <line x1="80" y1="178" x2="1200" y2="178" stroke="#ffffff" stroke-opacity="0.07"/>
+  <circle cx="128" cy="137" r="9" fill="#ff5f56"/><circle cx="160" cy="137" r="9" fill="#ffbd2e"/><circle cx="192" cy="137" r="9" fill="#27c93f"/>
+  <text x="244" y="146" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="30" fill="#aeb4c0">document-pipeline</text>
+  <g transform="translate(976,114)">
+    <rect width="144" height="46" rx="23" fill="#ff6600" fill-opacity="0.16" stroke="#ff8a3d" stroke-opacity="0.5"/>
+    <text x="72" y="31" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#ffae78">pub / sub</text>
+  </g>
+
+  <!-- connectors -->
+  <g stroke="#ff8a3d" stroke-opacity="0.55" stroke-width="3" fill="none">
+    <path d="M340 392 H 404" marker-end="url(#arrow)"/>
+    <path d="M620 360 C 660 360, 660 290, 696 290" marker-end="url(#arrow)"/>
+    <path d="M620 424 C 660 424, 660 494, 696 494" marker-end="url(#arrow)"/>
+    <path d="M920 290 C 956 290, 956 392, 976 392" marker-end="url(#arrow)"/>
+    <path d="M920 494 C 956 494, 956 392, 976 392" marker-end="url(#arrow)"/>
+  </g>
+  <!-- message on the wire -->
+  <g transform="translate(360,378)"><rect width="28" height="20" rx="3" fill="#ff6600"/><path d="M0 0 L14 11 L28 0" fill="none" stroke="#140b04" stroke-width="2"/></g>
+
+  <!-- producer -->
+  <g transform="translate(130,346)" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">
+    <rect width="210" height="92" rx="14" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/>
+    <text x="105" y="44" text-anchor="middle" font-size="28" fill="#e9ddd2">Producer</text>
+    <text x="105" y="74" text-anchor="middle" font-size="20" fill="#a98e76">IngestService</text>
+  </g>
+  <!-- exchange hub -->
+  <g transform="translate(410,330)" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">
+    <rect width="210" height="124" rx="14" fill="url(#hub)" stroke="#ff8a3d" stroke-opacity="0.7"/>
+    <text x="105" y="52" text-anchor="middle" font-size="28" fill="#ffd9bc">documents.x</text>
+    <text x="105" y="84" text-anchor="middle" font-size="21" fill="#ffae78">topic exchange</text>
+  </g>
+  <!-- queues -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24">
+    <g transform="translate(696,254)"><rect width="224" height="74" rx="12" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/><text x="24" y="36" fill="#e9ddd2">ocr.queue</text><text x="24" y="60" font-size="18" fill="#a98e76">summarize · AI</text></g>
+    <g transform="translate(696,458)"><rect width="224" height="74" rx="12" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/><text x="24" y="36" fill="#e9ddd2">index.queue</text><text x="24" y="60" font-size="18" fill="#a98e76">search index</text></g>
+  </g>
+  <!-- consumer -->
+  <g transform="translate(976,346)" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">
+    <rect width="190" height="92" rx="14" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/>
+    <text x="95" y="44" text-anchor="middle" font-size="28" fill="#e9ddd2">Consumer</text>
+    <text x="95" y="74" text-anchor="middle" font-size="20" fill="#a98e76">typed · ack</text>
+  </g>
+
+  <text x="130" y="636" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#727892">typed consumers · SSE stream · published on NuGet</text>
+</svg>

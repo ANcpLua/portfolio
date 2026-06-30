@@ -1,5 +1,9 @@
 import {
   LucideBot,
+  LucideBraces,
+  LucideCpu,
+  LucideDownload,
+  LucideGauge,
   LucideMap,
   LucidePackage,
   LucidePaintbrush,
@@ -7,6 +11,7 @@ import {
   LucideRadioTower,
   LucideScanLine,
   LucideShieldCheck,
+  LucideShuffle,
   LucideWaypoints,
   LucideZap,
   type LucideIcon,
@@ -56,6 +61,7 @@ export const projects: Project[] = [
     meta: 'Medical imaging · React · FHIR R4',
     url: 'https://github.com/ANcpLua/dicom-fhir-viewer',
     tint: '#22b8cf',
+    image: '/projects/dicom-fhir.svg',
   },
   {
     id: 'errororx',
@@ -67,6 +73,7 @@ export const projects: Project[] = [
     meta: 'Source generator · RFC 9457 · AOT',
     url: 'https://github.com/ANcpLua/ErrorOrX',
     tint: '#f4a259',
+    image: '/projects/errororx.svg',
   },
   {
     id: 'ghostty',
@@ -90,6 +97,7 @@ export const projects: Project[] = [
     meta: 'OpenTelemetry · C# · source generator',
     url: 'https://github.com/ANcpLua/Qyl.OpenTelemetry.SemanticConventions',
     tint: '#8b5cf6',
+    image: '/projects/otel-semconv.svg',
   },
   {
     id: 'agents',
@@ -101,6 +109,7 @@ export const projects: Project[] = [
     meta: 'C# · Microsoft Agent Framework · 12 packages',
     url: 'https://github.com/ANcpLua/ANcpLua.Agents',
     tint: '#7c5cff',
+    image: '/projects/agents.svg',
   },
   {
     id: 'sdk',
@@ -112,6 +121,7 @@ export const projects: Project[] = [
     meta: 'MSBuild SDK · analyzers · polyfills',
     url: 'https://github.com/ANcpLua/ANcpLua.NET.Sdk',
     tint: '#512bd4',
+    image: '/projects/sdk.svg',
   },
   {
     id: 'analyzers',
@@ -123,6 +133,7 @@ export const projects: Project[] = [
     meta: 'Roslyn · 89 diagnostics + fixes',
     url: 'https://github.com/ANcpLua/ANcpLua.Analyzers',
     tint: '#2b9348',
+    image: '/projects/analyzers.svg',
   },
   {
     id: 'tourplanner',
@@ -134,6 +145,7 @@ export const projects: Project[] = [
     meta: 'Angular 21 · .NET 10 · 429 tests',
     url: 'https://github.com/ANcpLua/TourPlanner-Angular',
     tint: '#dd0031',
+    image: '/projects/tourplanner.svg',
   },
   {
     id: 'paperless-rabbitmq',
@@ -145,6 +157,67 @@ export const projects: Project[] = [
     meta: 'RabbitMQ · pub/sub · published',
     url: 'https://github.com/ANcpLua/SWEN3.Paperless.RabbitMq',
     tint: '#ff6600',
+    image: '/projects/paperless-rabbitmq.svg',
+  },
+  {
+    id: 'dotcov',
+    icon: LucideGauge,
+    name: 'DotCov',
+    title: 'Streaming Cobertura coverage toolkit',
+    description:
+      'A zero-dependency streaming Cobertura parser, a dotnet global tool, and a NUKE build component that gates CI on coverage — it handles 50 MB+ reports without ever loading the whole DOM.',
+    meta: '.NET tool · NUKE · CI gate',
+    url: 'https://github.com/ANcpLua/dotcov',
+    tint: '#0891b2',
+    image: '/projects/dotcov.svg',
+  },
+  {
+    id: 'mapster',
+    icon: LucideShuffle,
+    name: 'MapsterExtensions.Generator',
+    title: 'Typed mapping extensions, generated',
+    description:
+      'A source generator that scans your Mapster [Generate] configs and emits one strongly-typed extension per mapping — turning user.Adapt<UserDto>() into user.ToUserDto().',
+    meta: 'Source generator · Mapster · C#',
+    url: 'https://github.com/ANcpLua/MapsterExtensions.Generator',
+    tint: '#f06595',
+    image: '/projects/mapster.svg',
+  },
+  {
+    id: 'save-media',
+    icon: LucideDownload,
+    name: 'save-media',
+    title: 'Verified-only video downloader extension',
+    description:
+      'An MV3 extension for Chrome, Edge and Firefox that saves a video only when it can prove the bytes are a complete, playable file — direct MP4/WebM and plain HLS VOD remuxed to one MP4. No DRM bypass, no native host.',
+    meta: 'Browser extension · TypeScript · MV3',
+    url: 'https://github.com/ANcpLua/save-media',
+    tint: '#4263eb',
+    image: '/projects/save-media.svg',
+  },
+  {
+    id: 'bitnet',
+    icon: LucideCpu,
+    name: 'ANcpLua.BitNet',
+    title: "Microsoft's BitNet as a .NET IChatClient",
+    description:
+      "Wires Microsoft's 1.58-bit BitNet (bitnet.cpp / llama-server) into the Microsoft.Extensions.AI IChatClient abstraction — keyed DI, a health check, and a digest-pinned [BitNet] xUnit fixture. A cheap local model to test against.",
+    meta: 'Microsoft.Extensions.AI · local LLM · xUnit',
+    url: 'https://github.com/ANcpLua/ANcpLua.BitNet',
+    tint: '#ae3ec9',
+    image: '/projects/bitnet.svg',
+  },
+  {
+    id: 'scalar-kiota',
+    icon: LucideBraces,
+    name: 'Scalar.Kiota.Extension',
+    title: 'Kiota SDKs inside a Scalar API reference',
+    description:
+      'For ASP.NET Core minimal APIs: generates typed client SDKs with Kiota (TypeScript, C#, Python) and serves them inside a Scalar API reference — one call to add, one to map, Native AOT compatible.',
+    meta: 'OpenAPI · Kiota · Scalar · AOT',
+    url: 'https://github.com/ANcpLua/Scalar.Kiota.Extension',
+    tint: '#0ca678',
+    image: '/projects/scalar-kiota.svg',
   },
 ];
 
