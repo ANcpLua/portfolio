@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img" aria-label="MapsterExtensions.Generator — generates ToDto() extension methods from Mapster mappings">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#160611"/><stop offset="1" stop-color="#0a070a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.9">
+      <stop offset="0" stop-color="#f06595" stop-opacity="0.26"/>
+      <stop offset="0.55" stop-color="#f06595" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#f06595" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15161d"/><stop offset="1" stop-color="#101117"/>
+    </linearGradient>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="34" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#dots)"/>
+  <rect width="1280" height="800" fill="url(#glow)"/>
+  <g filter="url(#soft)">
+    <rect x="80" y="96" width="1120" height="608" rx="28" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08"/>
+  </g>
+  <line x1="80" y1="178" x2="1200" y2="178" stroke="#ffffff" stroke-opacity="0.07"/>
+  <circle cx="128" cy="137" r="9" fill="#ff5f56"/><circle cx="160" cy="137" r="9" fill="#ffbd2e"/><circle cx="192" cy="137" r="9" fill="#27c93f"/>
+  <text x="244" y="146" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="30" fill="#aeb4c0">Mapping.g.cs</text>
+  <g transform="translate(900,114)">
+    <rect width="220" height="46" rx="23" fill="#f06595" fill-opacity="0.16" stroke="#f06595" stroke-opacity="0.5"/>
+    <text x="110" y="31" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#f88cb1">source-generated</text>
+  </g>
+
+  <!-- input -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="32">
+    <text x="128" y="252" fill="#f06595">[Generate]<tspan fill="#5f6675">  // on your IRegister</tspan></text>
+    <text x="128" y="306" fill="#cdd2dc">config.NewConfig&lt;<tspan fill="#f8b3cb">User</tspan>, <tspan fill="#f8b3cb">UserDto</tspan>&gt;();</text>
+  </g>
+
+  <!-- generates arrow -->
+  <g transform="translate(128,344)">
+    <line x1="14" y1="0" x2="14" y2="34" stroke="#f06595" stroke-opacity="0.6" stroke-width="2.5"/>
+    <path d="M6 26 L14 36 L22 26" fill="none" stroke="#f06595" stroke-opacity="0.6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="44" y="28" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="22" fill="#5f6675">scans the config, emits one extension per mapping</text>
+  </g>
+
+  <!-- before -->
+  <g transform="translate(128,408)">
+    <rect width="1024" height="84" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.06"/>
+    <g transform="translate(24,22)"><rect width="118" height="40" rx="10" fill="#ffffff" fill-opacity="0.06"/><text x="59" y="27" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="22" fill="#8a8f9c">before</text></g>
+    <text x="168" y="52" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="30" fill="#8a8f9c">user.Adapt&lt;UserDto&gt;();</text>
+    <text x="700" y="52" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#5f6675">// stringly, meh</text>
+  </g>
+
+  <!-- after -->
+  <g transform="translate(128,512)">
+    <rect width="1024" height="84" rx="14" fill="#f06595" fill-opacity="0.08" stroke="#f06595" stroke-opacity="0.35"/>
+    <g transform="translate(24,22)"><rect width="118" height="40" rx="10" fill="#f06595" fill-opacity="0.18"/><text x="59" y="27" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="22" fill="#f88cb1">after</text></g>
+    <text x="168" y="52" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="30" fill="#f3d3df">user.<tspan fill="#f88cb1">ToUserDto</tspan>();</text>
+    <text x="620" y="52" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#a06b80">// type T, Tab — done</text>
+  </g>
+
+  <text x="128" y="652" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="22" fill="#727892">no registration → no generated code → compilation fails</text>
+</svg>

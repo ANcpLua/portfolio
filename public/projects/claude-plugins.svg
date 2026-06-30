@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img" aria-label="ancplua-claude-plugins — a marketplace of multi-agent Claude Code plugins">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140b06"/><stop offset="1" stop-color="#0a0807"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.9">
+      <stop offset="0" stop-color="#d97757" stop-opacity="0.28"/>
+      <stop offset="0.55" stop-color="#d97757" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#d97757" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15161d"/><stop offset="1" stop-color="#101117"/>
+    </linearGradient>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="34" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#dots)"/>
+  <rect width="1280" height="800" fill="url(#glow)"/>
+  <g filter="url(#soft)">
+    <rect x="80" y="96" width="1120" height="608" rx="28" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08"/>
+  </g>
+  <line x1="80" y1="178" x2="1200" y2="178" stroke="#ffffff" stroke-opacity="0.07"/>
+  <circle cx="128" cy="137" r="9" fill="#ff5f56"/><circle cx="160" cy="137" r="9" fill="#ffbd2e"/><circle cx="192" cy="137" r="9" fill="#27c93f"/>
+  <text x="244" y="146" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="30" fill="#aeb4c0">claude-code · marketplace</text>
+  <g transform="translate(972,114)">
+    <rect width="148" height="46" rx="23" fill="#d97757" fill-opacity="0.16" stroke="#d97757" stroke-opacity="0.55"/>
+    <text x="74" y="31" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#eaa184">13 plugins</text>
+  </g>
+
+  <!-- plugin chip grid -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="21" fill="#e3d3c9">
+    <!-- row 1 -->
+    <g transform="translate(128,206)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">exodia</text></g>
+    <g transform="translate(472,206)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">council</text></g>
+    <g transform="translate(816,206)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">charon</text></g>
+    <!-- row 2 -->
+    <g transform="translate(128,282)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">derot</text></g>
+    <g transform="translate(472,282)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">nihil</text></g>
+    <g transform="translate(816,282)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">elegance-pipeline</text></g>
+    <!-- row 3 -->
+    <g transform="translate(128,358)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">mutation-minded-testing</text></g>
+    <g transform="translate(472,358)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">cc-plugin-eval</text></g>
+    <g transform="translate(816,358)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">html-effectiveness</text></g>
+    <!-- row 4 -->
+    <g transform="translate(128,434)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">nuget-opensrc</text></g>
+    <g transform="translate(472,434)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">metacognitive-guard</text></g>
+    <g transform="translate(816,434)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">feature-dev</text></g>
+    <!-- row 5 -->
+    <g transform="translate(128,510)"><rect width="320" height="60" rx="12" fill="#d97757" fill-opacity="0.08" stroke="#d97757" stroke-opacity="0.30"/><text x="22" y="38">tomevault-publish</text></g>
+  </g>
+
+  <text x="488" y="548" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#c98a6c">24 commands · 23 skills · 30 agents</text>
+  <text x="128" y="638" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="22" fill="#727892">gated multi-agent orchestration — work advances only when the gate says PROCEED</text>
+</svg>

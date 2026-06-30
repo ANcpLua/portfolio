@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img" aria-label="ANcpLua.NET.Sdk — opinionated MSBuild SDK for .NET">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0814"/><stop offset="1" stop-color="#07070c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#512bd4" stop-opacity="0.34"/>
+      <stop offset="0.55" stop-color="#512bd4" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#512bd4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15161d"/><stop offset="1" stop-color="#101117"/>
+    </linearGradient>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="34" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#dots)"/>
+  <rect width="1280" height="800" fill="url(#glow)"/>
+  <g filter="url(#soft)">
+    <rect x="80" y="96" width="1120" height="608" rx="28" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.08"/>
+  </g>
+  <line x1="80" y1="178" x2="1200" y2="178" stroke="#ffffff" stroke-opacity="0.07"/>
+  <circle cx="128" cy="137" r="9" fill="#ff5f56"/><circle cx="160" cy="137" r="9" fill="#ffbd2e"/><circle cx="192" cy="137" r="9" fill="#27c93f"/>
+  <text x="244" y="146" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="30" fill="#aeb4c0">MyLib.csproj</text>
+  <g transform="translate(960,114)">
+    <rect width="160" height="46" rx="23" fill="#512bd4" fill-opacity="0.18" stroke="#7a5be6" stroke-opacity="0.6"/>
+    <text x="80" y="31" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#b6a2f5">.NET 10</text>
+  </g>
+
+  <!-- hero one-liner -->
+  <g transform="translate(180,278)">
+    <rect width="920" height="116" rx="16" fill="#ffffff" fill-opacity="0.04" stroke="#7a5be6" stroke-opacity="0.30"/>
+    <text x="460" y="72" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="40" fill="#e6e1fb">&lt;Project <tspan fill="#b6a2f5">Sdk</tspan>=<tspan fill="#8fd98f">"ANcpLua.NET.Sdk"</tspan>&gt;</text>
+  </g>
+
+  <!-- variant pills -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="28">
+    <g transform="translate(296,448)"><rect width="200" height="62" rx="14" fill="#512bd4" fill-opacity="0.12" stroke="#7a5be6" stroke-opacity="0.45"/><text x="100" y="40" text-anchor="middle" fill="#cbbef7">Library</text></g>
+    <g transform="translate(540,448)"><rect width="200" height="62" rx="14" fill="#512bd4" fill-opacity="0.12" stroke="#7a5be6" stroke-opacity="0.45"/><text x="100" y="40" text-anchor="middle" fill="#cbbef7">Web</text></g>
+    <g transform="translate(784,448)"><rect width="200" height="62" rx="14" fill="#512bd4" fill-opacity="0.12" stroke="#7a5be6" stroke-opacity="0.45"/><text x="100" y="40" text-anchor="middle" fill="#cbbef7">Test</text></g>
+  </g>
+
+  <text x="640" y="592" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" fill="#aab0bd">analyzers · nullable · polyfills</text>
+  <text x="640" y="636" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="26" fill="#6b7180">auto-injected from the first build</text>
+</svg>
