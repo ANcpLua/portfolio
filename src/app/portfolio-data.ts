@@ -148,7 +148,7 @@ export const projects: Project[] = [
     meta: 'Angular 21 · .NET 10 · 429 tests',
     url: 'https://github.com/ANcpLua/TourPlanner-Angular',
     tint: '#dd0031',
-    image: '/projects/tourplanner.png',
+    image: '/projects/tourplanner.svg',
   },
   {
     id: 'paperless-rabbitmq',
