@@ -64,7 +64,7 @@ export const projects: Project[] = [
     meta: 'Medical imaging · React · FHIR R4',
     url: 'https://github.com/ANcpLua/dicom-fhir-viewer',
     tint: '#22b8cf',
-    image: '/projects/dicom-fhir.svg',
+    image: '/projects/dicom-fhir.jpg',
   },
   {
     id: 'errororx',
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     meta: 'Angular 21 · .NET 10 · 429 tests',
     url: 'https://github.com/ANcpLua/TourPlanner-Angular',
     tint: '#dd0031',
-    image: '/projects/tourplanner.svg',
+    image: '/projects/tourplanner.png',
   },
   {
     id: 'paperless-rabbitmq',
@@ -196,7 +196,7 @@ export const projects: Project[] = [
     meta: 'Browser extension · TypeScript · MV3',
     url: 'https://github.com/ANcpLua/save-media',
     tint: '#4263eb',
-    image: '/projects/save-media.svg',
+    image: '/projects/save-media.png',
   },
   {
     id: 'bitnet',
