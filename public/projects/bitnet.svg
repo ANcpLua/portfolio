@@ -32,11 +32,11 @@
     <text x="96" y="31" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24" fill="#dd9bee">1.58-bit · local</text>
   </g>
 
-  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="33">
-    <text x="128" y="258" fill="#cdd2dc">[assembly: <tspan fill="#d089e6">BitNetEndpoint</tspan>(<tspan fill="#8fd98f">"local"</tspan>)]</text>
-    <text x="128" y="338" fill="#cdd2dc">services.<tspan fill="#d089e6">AddDiscoveredBitNetClients</tspan>();</text>
-    <text x="128" y="418" fill="#cdd2dc"><tspan fill="#8a93a6">var</tspan> reply = <tspan fill="#8a93a6">await</tspan> chat.GetResponseAsync(</text>
-    <text x="128" y="466" fill="#cdd2dc">    <tspan fill="#8fd98f">"ping"</tspan>);   <tspan fill="#5f6675">// → bitnet.cpp llama-server</tspan></text>
+  <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="28">
+    <text x="128" y="252" fill="#cdd2dc">[assembly: <tspan fill="#d089e6">BitNetEndpoint</tspan>(<tspan fill="#8fd98f">"local"</tspan>, <tspan fill="#8fd98f">"http://localhost:8080"</tspan>)]</text>
+    <text x="128" y="330" fill="#cdd2dc">builder.<tspan fill="#d089e6">AddDiscoveredBitNetClients</tspan>();</text>
+    <text x="128" y="412" fill="#cdd2dc"><tspan fill="#8a93a6">var</tspan> reply = <tspan fill="#8a93a6">await</tspan> chat.GetResponseAsync(</text>
+    <text x="128" y="458" fill="#cdd2dc">    <tspan fill="#8fd98f">"ping"</tspan>);   <tspan fill="#5f6675">// → bitnet.cpp llama-server</tspan></text>
   </g>
 
   <line x1="128" y1="516" x2="1152" y2="516" stroke="#ffffff" stroke-opacity="0.06"/>

@@ -45,6 +45,6 @@
     <g transform="translate(784,448)"><rect width="200" height="62" rx="14" fill="#512bd4" fill-opacity="0.12" stroke="#7a5be6" stroke-opacity="0.45"/><text x="100" y="40" text-anchor="middle" fill="#cbbef7">Test</text></g>
   </g>
 
-  <text x="640" y="592" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" fill="#aab0bd">analyzers · nullable · polyfills</text>
+  <text x="640" y="592" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" fill="#aab0bd">analyzers · nullable · implicit usings</text>
   <text x="640" y="636" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="26" fill="#6b7180">auto-injected from the first build</text>
 </svg>
