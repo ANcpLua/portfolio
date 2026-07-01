@@ -1,4 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>ANcpLua/renovate-config"]
+  "extends": ["local>ANcpLua/renovate-config"],
+  "packageRules": [
+    {
+      "description": "Upgrade Angular framework, CLI, and its pinned TypeScript in lockstep — they are peer-coupled (e.g. @angular/build requires a specific TypeScript range), so splitting them into separate PRs produces lockfiles that can't resolve.",
+      "matchPackageNames": [
+        "@angular/**",
+        "@angular-devkit/**",
+        "@schematics/angular",
+        "ng-packagr",
+        "zone.js",
+        "typescript"
+      ],
+      "groupName": "angular"
+    }
+  ]
 }
