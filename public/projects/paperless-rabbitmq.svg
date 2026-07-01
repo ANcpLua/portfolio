@@ -63,8 +63,8 @@
   </g>
   <!-- queues -->
   <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24">
-    <g transform="translate(696,254)"><rect width="224" height="74" rx="12" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/><text x="24" y="36" fill="#e9ddd2">ocr.queue</text><text x="24" y="60" font-size="18" fill="#a98e76">summarize · AI</text></g>
-    <g transform="translate(696,458)"><rect width="224" height="74" rx="12" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/><text x="24" y="36" fill="#e9ddd2">index.queue</text><text x="24" y="60" font-size="18" fill="#a98e76">search index</text></g>
+    <g transform="translate(696,254)"><rect width="224" height="74" rx="12" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/><text x="24" y="36" fill="#e9ddd2">ocr.queue</text><text x="24" y="60" font-size="18" fill="#a98e76">text extraction</text></g>
+    <g transform="translate(696,458)"><rect width="224" height="74" rx="12" fill="#ffffff" fill-opacity="0.05" stroke="#ff8a3d" stroke-opacity="0.4"/><text x="24" y="36" fill="#e9ddd2">genai.queue</text><text x="24" y="60" font-size="18" fill="#a98e76">summarize · AI</text></g>
   </g>
   <!-- consumer -->
   <g transform="translate(976,346)" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace">

@@ -57,13 +57,13 @@
     <text x="32" y="106" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="22" fill="#8a8f9c">Krems → Dürnstein → Krems</text>
 
     <line x1="32" y1="138" x2="412" y2="138" stroke="#ffffff" stroke-opacity="0.06"/>
-    <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="25">
-      <text x="32" y="184" fill="#8a8f9c">Distance</text><text x="412" y="184" text-anchor="end" fill="#e7dde0">42.0 km</text>
+    <g font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="24">
+      <text x="32" y="182" fill="#8a8f9c">Distance</text><text x="412" y="182" text-anchor="end" fill="#e7dde0">42.0 km</text>
       <text x="32" y="228" fill="#8a8f9c">Est. time</text><text x="412" y="228" text-anchor="end" fill="#e7dde0">2 h 10 m</text>
-      <text x="32" y="272" fill="#8a8f9c">Difficulty</text><text x="412" y="272" text-anchor="end" fill="#ff8197">moderate</text>
+      <text x="32" y="274" fill="#8a8f9c">Transport</text><text x="412" y="274" text-anchor="end" fill="#e7dde0">Bicycle</text>
+      <text x="32" y="320" fill="#8a8f9c">Popularity</text><text x="412" y="320" text-anchor="end" fill="#ff8197">●●●●○</text>
+      <text x="32" y="366" fill="#8a8f9c">Avg. rating</text><text x="412" y="366" text-anchor="end" fill="#ffd06b">★ 4.6</text>
+      <text x="32" y="412" fill="#8a8f9c">Child-friendly</text><text x="412" y="412" text-anchor="end" fill="#e7dde0">Yes</text>
     </g>
-
-    <text x="32" y="320" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#6b7180">elevation</text>
-    <path d="M32 410 L 80 384 L 132 396 L 188 350 L 244 372 L 300 332 L 356 360 L 412 344 L 412 430 L 32 430 Z" fill="url(#elev)" stroke="#dd0031" stroke-width="2.5"/>
   </g>
 </svg>

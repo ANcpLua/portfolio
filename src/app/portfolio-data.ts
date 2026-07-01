@@ -108,8 +108,8 @@ export const projects: Project[] = [
     name: 'ANcpLua.Agents',
     title: 'C#-native LLM agent framework',
     description:
-      'An agent runtime, workflows, and provider hosting (OpenAI, Anthropic, Azure AI Foundry) on the Microsoft Agent Framework, with deterministic testing primitives — 12 packages.',
-    meta: 'C# · Microsoft Agent Framework · 12 packages',
+      'A lean toolkit for the Microsoft Agent Framework — runtime governance primitives, MAF-native OpenTelemetry, workflow helpers, and deterministic testing infrastructure. An instrumentation core, not provider facades. 6 packages.',
+    meta: 'C# · Microsoft Agent Framework · 6 packages',
     url: 'https://github.com/ANcpLua/ANcpLua.Agents',
     tint: '#7c5cff',
     image: '/projects/agents.svg',
