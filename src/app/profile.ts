@@ -22,7 +22,7 @@ export const PROFILE_CONTEXT = `
 Based in Vienna, Austria. Contact: ${OWNER.email} · GitHub github.com/ANcpLua · NuGet nuget.org/profiles/ANcpLua · LinkedIn linkedin.com/in/alexander-nachtmann. Languages: German (native), English (fluent).
 
 ## Summary
-Full-stack software engineer working primarily in C# / .NET, with Angular and React on the frontend. Professional experience at RUBICON IT (2023–2025, dual study) across ASP.NET Core, Blazor, Vue, and WPF, alongside a Computer Science degree. Maintains a substantial open-source portfolio — 48 published .NET packages with 340,000+ downloads — and contributes upstream to Microsoft's dotnet/aspnetcore and the OpenTelemetry project. Comfortable across the full stack: REST / OpenAPI backends, single-page frontends (Angular and React), automated testing, CI/CD, and containerised deployment. Especially drawn to event-driven architecture and messaging (RabbitMQ, MassTransit) and to observability (OpenTelemetry) — the areas he digs into for their own sake, well beyond anything a job has required.
+Full-stack software engineer working primarily in C# / .NET, with React on the frontend. Professional experience at RUBICON IT (2023–2025, dual study) across ASP.NET Core, Blazor, Vue, and WPF, alongside a Computer Science degree. Maintains a substantial open-source portfolio — 48 published .NET packages with 340,000+ downloads — and contributes upstream to Microsoft's dotnet/aspnetcore and the OpenTelemetry project. Comfortable across the full stack: REST / OpenAPI backends, single-page frontends (React), automated testing, CI/CD, and containerised deployment. Especially drawn to event-driven architecture and messaging (RabbitMQ, MassTransit) and to observability (OpenTelemetry) — the areas he digs into for their own sake, well beyond anything a job has required.
 
 ## Experience
 - RUBICON IT GmbH, Vienna (Aug 2023 – Jun 2025) — Fullstack C# Software Developer, dual study (alternating work/study phases). Built full-stack applications on C#, ASP.NET Core, Blazor, Vue 3, and WPF in an agile team. Backend with EF Core targeting SQL Server and PostgreSQL; messaging via Rebus and Hangfire. Contributed to architecture decisions, code reviews, and direct client communication.
@@ -63,15 +63,16 @@ AI Skills Fest 2026 (Microsoft); Agents League: Creative Apps / Reasoning Agents
 Study Program Representative, FH Technikum Wien (2023–2027, re-elected). External C# lecturer, FH Technikum Wien. 4,200+ hours tracked development (WakaTime).
 
 ## Technical depth
-- AI & LLM agent infrastructure: C#-native agent framework on Microsoft Agent Framework 1.3; provider hosting (OpenAI, Anthropic, Azure AI Foundry); deterministic testing primitives; MCP server with 25+ tool classes; LLM orchestration, RAG chunking, prompt/skill systems.
+- AI & LLM agent infrastructure: C#-native agent framework on Microsoft Agent Framework 1.3; provider hosting (OpenAI, Anthropic, Azure AI Foundry); deterministic testing primitives; MCP server with 25+ tool classes; LLM orchestration, RAG chunking, prompt/skill systems. LLM evaluation: clinical-abstention-bench — a calibrated-abstention benchmark (answer vs. escalate-to-human) on a fail-closed .NET eval engine.
 - Backend & APIs (.NET): ASP.NET Core 8/9/10, Minimal APIs, REST, gRPC, SSE streaming, background services; OpenAPI / RFC 9457; TypeSpec → OpenAPI → C# contract-first codegen; OpenTelemetry (OTLP tracing/metrics); Native AOT.
-- Frontend & TypeScript: Angular 21 (standalone components, signals, RxJS, routing, typed OpenAPI client, Vitest) — full TourPlanner SPA against a .NET 10 API with 259 frontend tests, Dockerised. React 19, TypeScript 5, Vue 3 (Composition API, Quasar, Pinia) on ASP.NET Core in production at RUBICON. Blazor Server + FluentUI; WPF (.NET 8). Shipped live frontends: atelierbella.art and the Ghostty Theme Catalog (interactive 463-theme browser, fuzzy search, keyboard navigation, live config apply).
+- Frontend & TypeScript: React 19, TypeScript 5, Vue 3 (Composition API, Quasar, Pinia) on ASP.NET Core in production at RUBICON. Full TourPlanner SPA (typed OpenAPI client, Vitest) against a .NET 10 API with 259 frontend tests, Dockerised. Blazor Server + FluentUI; WPF (.NET 8). Shipped live frontends: atelierbella.art and the Ghostty Theme Catalog (interactive 463-theme browser, fuzzy search, keyboard navigation, live config apply).
 - Data, storage & messaging: PostgreSQL, SQL Server, DuckDB; EF Core migrations and query optimisation; RabbitMQ, MassTransit, Wolverine, Rebus, Hangfire; event-driven architecture.
 - Quality engineering (Roslyn): 89 diagnostics with code fixes; 5-package Roslyn.Utilities suite; incremental source generators; opinionated MSBuild SDK.
 - Testing & DevOps: xUnit v3/v2, NUnit 4, TUnit, MSTest 4, bUnit (six frameworks benchmarked side-by-side); Testcontainers, WebApplicationFactory; multi-TFM (net8/9/10), 100% line coverage across 8+ libraries; mutation/snapshot/property-based testing; GitHub Actions matrix builds; Docker; Nuke build automation; deterministic builds, Source Link, .snupkg symbols.
 
 ## Selected public repositories
-- ANcpLua/TourPlanner-Angular — Angular 21 SPA + .NET 10 API, OpenAPI typed client, 429 tests, Docker.
+- ANcpLua/clinical-abstention-bench — calibrated-abstention LLM benchmark: does a medical AI know when it doesn’t know?
+- ANcpLua/TourPlanner-Angular — TypeScript SPA + .NET 10 API, OpenAPI typed client, 429 tests, Docker.
 - ANcpLua/ghostty-theme-catalog — interactive 463-theme browser, fuzzy search, keyboard-driven, live apply.
 - ANcpLua/ANcpLua.NET.Sdk — opinionated MSBuild SDK auto-injecting analyzers, polyfills, nullable.
 - ANcpLua/ANcpLua.Analyzers — 89 Roslyn diagnostics with code fixes.

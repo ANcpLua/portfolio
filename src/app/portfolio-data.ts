@@ -67,6 +67,17 @@ export const projects: Project[] = [
     image: '/projects/dicom-fhir.jpg',
   },
   {
+    id: 'abstention-bench',
+    icon: LucideRadar,
+    name: 'clinical-abstention-bench',
+    title: 'Does a medical AI know when it doesn’t know?',
+    description:
+      'A benchmark for calibrated abstention: models must decide when to answer and when to escalate to a human, measured on degraded clinical inputs against a fail-closed .NET evaluation engine.',
+    meta: 'LLM evaluation · calibrated abstention · .NET',
+    url: 'https://github.com/ANcpLua/clinical-abstention-bench',
+    tint: '#e63946',
+  },
+  {
     id: 'errororx',
     icon: LucideZap,
     name: 'ErrorOrX',
@@ -142,10 +153,10 @@ export const projects: Project[] = [
     id: 'tourplanner',
     icon: LucideMap,
     name: 'TourPlanner-Angular',
-    title: 'Angular 21 SPA on a .NET 10 API',
+    title: 'Full-stack TypeScript SPA on a .NET 10 API',
     description:
       'A full tour-planning single-page app with an OpenAPI-typed client against a .NET 10 backend — 429 tests across NUnit and Vitest, fully Dockerised.',
-    meta: 'Angular 21 · .NET 10 · 429 tests',
+    meta: 'TypeScript SPA · .NET 10 · 429 tests',
     url: 'https://github.com/ANcpLua/TourPlanner-Angular',
     tint: '#dd0031',
     image: '/projects/tourplanner.svg',
@@ -307,8 +318,7 @@ export const educationEntries: EducationEntry[] = [
 export const skills: readonly string[] = [
   'C# / .NET',
   'ASP.NET Core',
-  'Angular',
-  'React & Vue',
+  'React',
   'TypeScript',
   'Messaging & Event-Driven (RabbitMQ)',
   'Observability (OpenTelemetry)',
@@ -316,6 +326,7 @@ export const skills: readonly string[] = [
   'EF Core · PostgreSQL',
   'REST / OpenAPI',
   'LLM Agent Infrastructure',
+  'LLM Evaluation & Calibrated Abstention',
   'Testing (xUnit · NUnit · Vitest)',
   'Docker · CI/CD',
 ];
@@ -330,9 +341,8 @@ export type StackChip = {
 
 export const stackChips: StackChip[] = [
   { label: '.NET', slug: 'dotnet', bg: '#512BD4', fg: '#ffffff' },
-  { label: 'Angular', slug: 'angular', bg: '#dd0031', fg: '#ffffff' },
-  { label: 'TypeScript', slug: 'typescript', bg: '#2F74C0', fg: '#ffffff' },
   { label: 'React', slug: 'react', bg: '#20232a', fg: '#61dafb' },
+  { label: 'TypeScript', slug: 'typescript', bg: '#2F74C0', fg: '#ffffff' },
   { label: 'Vue', slug: 'vuedotjs', bg: '#35495e', fg: '#42b883' },
   { label: 'PostgreSQL', slug: 'postgresql', bg: '#336791', fg: '#ffffff' },
   { label: 'Docker', slug: 'docker', bg: '#2496ED', fg: '#ffffff' },

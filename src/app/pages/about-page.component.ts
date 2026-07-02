@@ -43,7 +43,7 @@ import { ContactCardComponent } from '../components/contact/contact-card.compone
                 <strong class="text-foreground font-semibold">full-stack software engineer</strong>
                 in Vienna working primarily in
                 <strong class="text-foreground font-semibold">C# / .NET</strong> with
-                <strong class="text-foreground font-semibold">Angular</strong> and React on the
+                <strong class="text-foreground font-semibold">React</strong> on the
                 frontend. At RUBICON IT (2023–2025, dual study) I shipped production apps across
                 ASP.NET Core, Blazor, Vue 3, and WPF in an agile team, alongside a Computer Science
                 degree.
