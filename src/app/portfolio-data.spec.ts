@@ -13,7 +13,7 @@ describe('portfolio content', () => {
     expect(projects.length).toBeGreaterThanOrEqual(6);
     expect(experienceEntries.length).toBeGreaterThanOrEqual(2);
     expect(educationEntries.length).toBeGreaterThanOrEqual(2);
-    expect(skills).toContain('Angular');
+    expect(skills).toContain('React');
     expect(stackChips.some((chip) => chip.label === '.NET')).toBe(true);
   });
 

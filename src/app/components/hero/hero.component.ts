@@ -24,7 +24,7 @@ import { PortraitMorphComponent } from './portrait-morph.component';
             </h1>
 
             <p class="text-foreground/65 max-w-[36ch] text-[22px] leading-[1.4] tracking-tight">
-              I build .NET backends and React/Angular frontends — plus an open-source ecosystem of
+              I build .NET backends and React frontends — plus an open-source ecosystem of
               48 packages with 340k+ downloads.
             </p>
 
