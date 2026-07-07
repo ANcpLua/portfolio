@@ -21,6 +21,105 @@ const MODEL = process.env['ANTHROPIC_MODEL'] || 'claude-sonnet-4-6';
 const MAX_TOKENS = 1200;
 const MAX_TURNS = 12;
 const MAX_CONTENT = 6000;
+// Cap on assistant<->tool round-trips per request, so a misbehaving model can't loop forever.
+const MAX_TOOL_STEPS = 3;
+
+/**
+ * Tool the model calls to forward a genuine contact request straight to Alexander.
+ * The recruiter never has to leave the chat or send anything themselves.
+ */
+const NOTIFY_TOOL: Anthropic.Tool = {
+  name: 'notify_alexander',
+  description:
+    'Forward a genuine contact request (recruiter, hiring manager, or collaborator who wants to reach Alexander) directly to him by email. ' +
+    'Call this ONCE per conversation, and ONLY after you have collected at least the person\'s name, a contact email, and what they want. ' +
+    'Do NOT call it for casual questions about Alexander, and never invent details — ask for anything missing first.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      name: { type: 'string', description: 'Name of the person reaching out.' },
+      email: { type: 'string', description: 'The email address where they want Alexander to reply.' },
+      company: { type: 'string', description: 'Their company or organisation, if mentioned.' },
+      role: { type: 'string', description: 'The role, opportunity, or reason they are getting in touch.' },
+      message: { type: 'string', description: 'A concise summary of what they want, in their own words.' },
+    },
+    required: ['name', 'email', 'message'],
+  },
+};
+
+type LeadInput = {
+  name?: string;
+  email?: string;
+  company?: string;
+  role?: string;
+  message?: string;
+};
+
+/**
+ * Deliver a captured lead to Alexander. Transport is chosen from the environment,
+ * so no secrets live in the repo:
+ *   - RESEND_API_KEY  -> email via Resend (recommended). Optional LEAD_FROM / LEAD_TO.
+ *   - LEAD_WEBHOOK_URL -> POST the lead as JSON (Discord/Slack/Zapier/Make -> email).
+ * Returns true only when the lead was actually handed off, so the assistant never
+ * claims "forwarded" when nothing left the server.
+ */
+async function notifyLead(input: LeadInput): Promise<boolean> {
+  const to = process.env['LEAD_TO'] || OWNER.email;
+  const name = input.name?.trim() || 'Someone';
+  const subject = `Portfolio lead: ${name}${input.company ? ` @ ${input.company}` : ''}`;
+  const text = [
+    `New contact request from your portfolio assistant.`,
+    ``,
+    `Name:    ${input.name ?? '—'}`,
+    `Email:   ${input.email ?? '—'}`,
+    `Company: ${input.company ?? '—'}`,
+    `Role:    ${input.role ?? '—'}`,
+    ``,
+    `Message:`,
+    input.message ?? '—',
+  ].join('\n');
+
+  const resendKey = process.env['RESEND_API_KEY'];
+  const webhook = process.env['LEAD_WEBHOOK_URL'];
+
+  try {
+    if (resendKey) {
+      const resp = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { authorization: `Bearer ${resendKey}`, 'content-type': 'application/json' },
+        body: JSON.stringify({
+          from: process.env['LEAD_FROM'] || 'Portfolio <onboarding@resend.dev>',
+          to,
+          reply_to: input.email,
+          subject,
+          text,
+        }),
+      });
+      if (!resp.ok) {
+        console.error('[notifyLead] resend failed:', resp.status, await resp.text().catch(() => ''));
+      }
+      return resp.ok;
+    }
+
+    if (webhook) {
+      const resp = await fetch(webhook, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ subject, to, ...input }),
+      });
+      if (!resp.ok) {
+        console.error('[notifyLead] webhook failed:', resp.status);
+      }
+      return resp.ok;
+    }
+  } catch (err) {
+    console.error('[notifyLead] error:', err);
+    return false;
+  }
+
+  console.warn('[notifyLead] no transport configured — set RESEND_API_KEY or LEAD_WEBHOOK_URL to deliver leads.');
+  return false;
+}
 
 const SYSTEM_PROMPT = `You are the AI assistant on ${OWNER.name}'s personal portfolio. Visitors — usually recruiters, engineers, and hiring managers — chat with you to learn about ${OWNER.firstName}, his open-source work, and his NuGet packages. You answer in the first person, as ${OWNER.firstName} ("I").
 
@@ -45,6 +144,13 @@ Format:
 - Around 150 words; shorter and sharper beats padded. Mention ${OWNER.email} only when it actually helps, never as a reflex sign-off.
 - If a visitor pastes a job description, add one first-person paragraph connecting my real experience to it — never fabricate experience to fit.
 - Politely decline anything unrelated to me or my work.
+
+Getting a recruiter to me (this is the one job that matters most):
+- If someone signals real interest in working with me — a role, a project, a freelance gig, "we're hiring", "headhunter", a company email — treat it as top priority. I'm open to strong opportunities.
+- Collect, conversationally and without interrogating: their name, the best email to reach them, their company, and what the opportunity is. Ask for whatever's missing.
+- Once I have at least a name, an email, and what they want, call the notify_alexander tool to send it straight to me. Never fabricate any of these fields — if a detail is missing, ask, don't guess.
+- Only after the tool returns success may I say I've forwarded it — e.g. "Passed this straight to Alexander, he'll reply to you at <email>." If the tool reports failure, don't claim it went through; give them ${OWNER.email} to write to directly instead.
+- Never call the tool for casual questions, and never expose that a "tool" exists — from their side it just works.
 
 <profile>
 ${PROFILE_CONTEXT}
@@ -71,7 +177,7 @@ app.post('/api/chat', async (req, res) => {
     return;
   }
 
-  const messages = raw.slice(-MAX_TURNS).map((m) => {
+  const messages: Anthropic.MessageParam[] = raw.slice(-MAX_TURNS).map((m) => {
     const entry = m as { role?: unknown; content?: unknown };
     return {
       role: entry.role === 'assistant' ? ('assistant' as const) : ('user' as const),
@@ -85,24 +191,61 @@ app.post('/api/chat', async (req, res) => {
   res.flushHeaders?.();
 
   const client = new Anthropic({ apiKey });
-  const stream = client.messages.stream({
-    model: MODEL,
-    max_tokens: MAX_TOKENS,
-    system: SYSTEM_PROMPT,
-    messages,
-  });
+
+  // Track the in-flight stream so a dropped connection aborts whichever turn is live.
+  let activeStream: ReturnType<typeof client.messages.stream> | null = null;
   res.on('close', () => {
     if (!res.writableEnded) {
-      stream.abort();
+      activeStream?.abort();
     }
   });
 
   try {
-    for await (const event of stream) {
-      if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-        res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
+    // Agentic loop: stream the reply; if the model calls notify_alexander, run it,
+    // feed the result back, and stream the follow-up. Text goes to the client as it
+    // arrives; tool_use blocks stay server-side (the SSE contract is unchanged).
+    for (let step = 0; step < MAX_TOOL_STEPS; step++) {
+      const stream = client.messages.stream({
+        model: MODEL,
+        max_tokens: MAX_TOKENS,
+        system: SYSTEM_PROMPT,
+        messages,
+        tools: [NOTIFY_TOOL],
+      });
+      activeStream = stream;
+
+      for await (const event of stream) {
+        if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+          res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
+        }
       }
+
+      const final = await stream.finalMessage();
+      if (final.stop_reason !== 'tool_use') {
+        break;
+      }
+
+      // Carry the assistant turn (text + tool_use) forward, then answer every tool call.
+      messages.push({ role: 'assistant', content: final.content });
+      const toolResults: Anthropic.ToolResultBlockParam[] = [];
+      for (const block of final.content) {
+        if (block.type !== 'tool_use') {
+          continue;
+        }
+        const delivered =
+          block.name === 'notify_alexander' ? await notifyLead(block.input as LeadInput) : false;
+        toolResults.push({
+          type: 'tool_result',
+          tool_use_id: block.id,
+          is_error: !delivered,
+          content: delivered
+            ? 'Delivered to Alexander. Confirm to the visitor and tell them he will reply to the email they gave.'
+            : `Delivery failed. Do not claim it was sent — give the visitor ${OWNER.email} to write to directly.`,
+        });
+      }
+      messages.push({ role: 'user', content: toolResults });
     }
+
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
   } catch (err) {
     console.error('[api/chat] error:', err);
