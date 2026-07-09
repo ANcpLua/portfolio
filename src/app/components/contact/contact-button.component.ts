@@ -64,11 +64,14 @@ export class ContactButtonComponent {
   protected readonly open = signal(false);
   protected readonly copied = signal(false);
 
+  // WCAG 2.5.3 Label in Name: the accessible name must contain the visible label,
+  // or voice control ("click Contact") cannot reach the button. The visible label
+  // is "Contact" when closed and the email address once open.
   protected readonly ariaLabel = computed(() => {
     if (this.copied()) {
-      return 'Email copied';
+      return `${this.email} copied to clipboard`;
     }
-    return this.open() ? `Copy ${this.email}` : 'Show email';
+    return this.open() ? `Copy ${this.email}` : 'Contact, show email';
   });
 
   constructor() {

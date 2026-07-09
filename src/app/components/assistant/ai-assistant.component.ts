@@ -130,7 +130,7 @@ const SUGGESTIONS = [
         </div>
       }
 
-      <p class="text-foreground/40 mt-5 text-[12px] tracking-tight">
+      <p class="text-foreground/60 mt-5 text-[12px] tracking-tight">
         AI-generated from my CV — it can be imperfect. For anything important, reach out directly.
       </p>
     </section>

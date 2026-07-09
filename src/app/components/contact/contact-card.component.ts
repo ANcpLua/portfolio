@@ -37,7 +37,11 @@ const LINKEDIN_PATH =
               class="pointer-events-none absolute inset-0 opacity-45 dark:opacity-25"
               style="mask-image: radial-gradient(ellipse 90% 110% at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0.15) 100%); -webkit-mask-image: radial-gradient(ellipse 90% 110% at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0.15) 100%);"
             >
-              <app-shader-flow [scale]="3" [brightness]="3" />
+              @defer (on viewport) {
+                <app-shader-flow [scale]="3" [brightness]="3" />
+              } @placeholder {
+                <div class="h-full w-full"></div>
+              }
             </div>
 
             <div
@@ -52,8 +56,8 @@ const LINKEDIN_PATH =
                 <p
                   class="text-foreground/65 mb-6 max-w-[29ch] text-[18px] leading-[1.4] tracking-tight sm:text-[22px]"
                 >
-                  Open to full-stack C# / .NET and React roles, freelance, and
-                  collaboration. Based in Vienna — happy to talk remote or on-site.
+                  Open to full-stack C# / .NET and React roles, freelance, and collaboration. Based
+                  in Vienna — happy to talk remote or on-site.
                 </p>
                 <app-cta-row label="See projects" />
               </div>

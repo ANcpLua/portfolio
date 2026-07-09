@@ -24,8 +24,8 @@ import { PortraitMorphComponent } from './portrait-morph.component';
             </h1>
 
             <p class="text-foreground/65 max-w-[36ch] text-[22px] leading-[1.4] tracking-tight">
-              I build .NET backends and React frontends — plus an open-source ecosystem of
-              48 packages with 340k+ downloads.
+              I build .NET backends and React frontends — plus an open-source ecosystem of 48
+              packages with 340k+ downloads.
             </p>
 
             <app-cta-row label="View My Work" emphasis="strong" />
@@ -36,11 +36,24 @@ import { PortraitMorphComponent } from './portrait-morph.component';
               class="border-foreground/8 bg-background relative aspect-square w-full overflow-hidden rounded-4xl border p-1.5 shadow-sm md:max-w-105"
             >
               <div class="relative h-full w-full overflow-hidden rounded-[1.6rem]">
-                <app-portrait-morph
-                  srcA="/alexander.webp"
-                  srcB="/alexander_wave.webp"
-                  alt="Alexander Nachtmann"
-                />
+                <!-- The placeholder is the real portrait, so it can serve as the LCP
+                     element while ogl loads on idle rather than blocking first paint. -->
+                @defer (on idle) {
+                  <app-portrait-morph
+                    srcA="/alexander.webp"
+                    srcB="/alexander_wave.webp"
+                    alt="Alexander Nachtmann"
+                  />
+                } @placeholder {
+                  <img
+                    src="/alexander.webp"
+                    alt="Alexander Nachtmann"
+                    width="420"
+                    height="420"
+                    fetchpriority="high"
+                    class="h-full w-full object-cover"
+                  />
+                }
               </div>
             </div>
           </div>
