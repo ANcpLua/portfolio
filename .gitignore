@@ -39,6 +39,9 @@ testem.log
 /typings
 __screenshots__/
 
+# Claude Code MCP config — local tooling, not tracked (mirrors the qyl repo)
+.mcp.json
+
 # System files
 .DS_Store
 Thumbs.db
