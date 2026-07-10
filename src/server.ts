@@ -24,10 +24,7 @@ const MAX_CONTENT = 6000;
 // Cap on assistant<->tool round-trips per request, so a misbehaving model can't loop forever.
 const MAX_TOOL_STEPS = 3;
 
-/**
- * Tool the model calls to forward a genuine contact request straight to Alexander.
- * The recruiter never has to leave the chat or send anything themselves.
- */
+/** Tool the model calls to forward a genuine contact request straight to Alexander. */
 const NOTIFY_TOOL: Anthropic.Tool = {
   name: 'notify_alexander',
   description:
@@ -56,12 +53,9 @@ type LeadInput = {
 };
 
 /**
- * Deliver a captured lead to Alexander. Transport is chosen from the environment,
- * so no secrets live in the repo:
- *   - RESEND_API_KEY  -> email via Resend (recommended). Optional LEAD_FROM / LEAD_TO.
- *   - LEAD_WEBHOOK_URL -> POST the lead as JSON (Discord/Slack/Zapier/Make -> email).
- * Returns true only when the lead was actually handed off, so the assistant never
- * claims "forwarded" when nothing left the server.
+ * Deliver a lead via Resend when RESEND_API_KEY is set (LEAD_FROM / LEAD_TO
+ * override the addresses); otherwise POST it as JSON to LEAD_WEBHOOK_URL.
+ * Returns true only when the transport accepted the handoff.
  */
 async function notifyLead(input: LeadInput): Promise<boolean> {
   const to = process.env['LEAD_TO'] || OWNER.email;
