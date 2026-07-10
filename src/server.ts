@@ -198,6 +198,10 @@ app.post('/api/chat', async (req, res) => {
     // Agentic loop: stream the reply; if the model calls notify_alexander, run it,
     // feed the result back, and stream the follow-up. Text goes to the client as it
     // arrives; tool_use blocks stay server-side (the SSE contract is unchanged).
+    // The client concatenates chunks verbatim, so the text before a tool call and the
+    // follow-up after it need an explicit separator or they run together mid-sentence.
+    let streamedText = false;
+    let pendingSeparator = false;
     for (let step = 0; step < MAX_TOOL_STEPS; step++) {
       const stream = client.messages.stream({
         model: MODEL,
@@ -210,7 +214,12 @@ app.post('/api/chat', async (req, res) => {
 
       for await (const event of stream) {
         if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+          if (pendingSeparator) {
+            pendingSeparator = false;
+            res.write(`data: ${JSON.stringify({ text: '\n\n' })}\n\n`);
+          }
           res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
+          streamedText = true;
         }
       }
 
@@ -238,6 +247,7 @@ app.post('/api/chat', async (req, res) => {
         });
       }
       messages.push({ role: 'user', content: toolResults });
+      pendingSeparator = streamedText;
     }
 
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
