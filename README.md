@@ -4,9 +4,9 @@ My personal portfolio: a calm black-and-white design system carrying a signature
 shader, a morphing illustrated portrait, physics-driven tech-stack chips, and a Claude-powered
 assistant that answers questions about my work — all server-rendered with Angular SSR.
 
-**[· Live → alexander-production-2841.up.railway.app ·](https://alexander-production-2841.up.railway.app)**
+**[· Live → ancplua.up.railway.app ·](https://ancplua.up.railway.app)**
 
-[![Angular 21](https://img.shields.io/badge/Angular-21-DD0031?logo=angular&logoColor=white)](https://angular.dev)
+[![Angular 22](https://img.shields.io/badge/Angular-22-DD0031?logo=angular&logoColor=white)](https://angular.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Angular SSR](https://img.shields.io/badge/SSR-Angular%20%2B%20Express-000000?logo=express&logoColor=white)](https://angular.dev/guide/ssr)
@@ -14,7 +14,7 @@ assistant that answers questions about my work — all server-rendered with Angu
 
 ## Built with
 
-- **Angular 21** — standalone components, signals, zoneless-friendly `OnPush`
+- **Angular 22** — standalone components, signals, zoneless-friendly `OnPush`
 - **Angular SSR** (`@angular/ssr` + Express) — server-side rendering with prerendered routes
 - **TypeScript** — strict mode
 - **Tailwind CSS v4** — token-driven theming
@@ -93,7 +93,7 @@ Without a key the rest of the site runs normally and `/api/chat` returns a frien
 
 ## Deployment
 
-Server-rendered on [Railway](https://railway.app) (`railway.json`, NIXPACKS): `npm run build`,
+Server-rendered on [Railway](https://railway.app) (`railway.json`, Dockerfile builder): `npm run build`,
 then `node dist/portfolio/server/server.mjs`. Railway gates each deploy on a successful build, so
 a bad dependency bump can never replace the live site. Set `ANTHROPIC_API_KEY` in the environment
 to power the assistant.
