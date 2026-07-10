@@ -1,6 +1,7 @@
 import {
   LucideBot,
   LucideBraces,
+  LucideCaptions,
   LucideCpu,
   LucideDownload,
   LucideFileText,
@@ -208,6 +209,17 @@ export const projects: Project[] = [
     url: 'https://github.com/ANcpLua/save-media',
     tint: '#4263eb',
     image: '/projects/save-media.png',
+  },
+  {
+    id: 'yt-transcript',
+    icon: LucideCaptions,
+    name: 'yt-transcript',
+    title: 'YouTube transcripts, extracted or transcribed locally',
+    description:
+      'An MV3 extension that pulls the caption track for any YouTube video into a clean reader panel — and when no captions exist, transcribes the audio locally with Whisper. On-device AI summaries via Chrome Prompt API or Ollama; no server, no telemetry.',
+    meta: 'Browser extension · Whisper · on-device AI',
+    url: 'https://github.com/ANcpLua/yt-transcript',
+    tint: '#e03131',
   },
   {
     id: 'bitnet',
