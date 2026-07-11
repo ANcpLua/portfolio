@@ -220,6 +220,7 @@ export const projects: Project[] = [
     meta: 'Browser extension · Whisper · on-device AI',
     url: 'https://github.com/ANcpLua/yt-transcript',
     tint: '#e03131',
+    image: '/projects/yt-transcript.png',
   },
   {
     id: 'bitnet',
