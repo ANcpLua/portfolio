@@ -73,10 +73,11 @@ export const projects: Project[] = [
     name: 'clinical-abstention-bench',
     title: 'Does a medical AI know when it doesn’t know?',
     description:
-      'A benchmark for calibrated abstention: models must decide when to answer and when to escalate to a human, measured on degraded clinical inputs against a fail-closed .NET evaluation engine.',
-    meta: 'LLM evaluation · calibrated abstention · .NET',
+      'A benchmark for calibrated abstention: each clinical case is shown with and without its decisive finding, and models are scored on answering vs. bluffing. First real measurement: llama3.2:3b bluffed on 100% of degraded cases. Fail-closed .NET engine, offline-capable.',
+    meta: 'LLM evaluation · calibrated abstention · .NET + Ollama',
     url: 'https://github.com/ANcpLua/clinical-abstention-bench',
     tint: '#e63946',
+    image: '/projects/abstention-bench.png',
   },
   {
     id: 'errororx',
