@@ -71,13 +71,13 @@ export const projects: Project[] = [
     id: 'abstention-bench',
     icon: LucideRadar,
     name: 'clinical-abstention-bench',
-    title: 'Does a medical AI know when it doesn’t know?',
+    title: 'Does a clinical AI follow the evidence?',
     description:
-      'A benchmark for calibrated abstention: each clinical case is shown with and without its decisive finding, and models are scored on answering vs. bluffing. First real measurement: llama3.2:3b bluffed on 100% of degraded cases. Fail-closed .NET engine, offline-capable.',
-    meta: 'LLM evaluation · calibrated abstention · .NET + Ollama',
-    url: 'https://github.com/ANcpLua/clinical-abstention-bench',
+      'A 12-case synthetic benchmark for diagnosis, certainty, and urgency across full, ablated, and alternative-supported evidence, with reproducible .NET grading and exact model transcripts.',
+    meta: 'Clinical AI evaluation · evidence calibration · .NET',
+    url: 'https://ancplua.github.io/clinical-abstention-bench/',
     tint: '#e63946',
-    image: '/projects/abstention-bench.png',
+    image: '/projects/clinical-abstention-bench.png',
   },
   {
     id: 'errororx',
